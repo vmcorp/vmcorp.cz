@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&display=swap');
 
 * {
     margin: 0;
@@ -7,28 +7,41 @@
 
 body,
 html {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     color: #fff;
-    background: url('./background.png') center top no-repeat #294160;
-    text-align: center;
+    background: #202124;
+    font-size: 16px;
+    line-height: 170%;
+}
+
+a {
+    color: #fff;
+}
+
+article {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+address {
+    font-style: normal;
+    margin-bottom: 30px;
 }
 
 body {
-    padding: 0 20px;
+    padding: 0 25px;
 }
 
 h1 {
-    padding-top: 75px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
+    padding-top: 35px;
+    font-weight: 800;
     line-height: 1.2;
-    margin: 0 0 30px;
+    margin: 0 0 10px;
+    font-size: 22px;
 }
 
-p {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.9;
-    margin-bottom: 25px;
+h2 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 20px;
 }
