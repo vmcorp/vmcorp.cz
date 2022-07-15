@@ -8,13 +8,17 @@
 body,
 html {
     font-family: 'JetBrains Mono', monospace;
-    color: #fff;
+    color: #ccc;
     background: #202124;
     font-size: 16px;
-    line-height: 170%;
+    line-height: 190%;
 }
 
 a {
+    color: #ccc;
+}
+
+a:hover {
     color: #fff;
 }
 
@@ -38,10 +42,30 @@ h1 {
     line-height: 1.2;
     margin: 0 0 10px;
     font-size: 22px;
+    color: #fff;
 }
 
 h2 {
     font-size: 18px;
     font-weight: 800;
-    margin-top: 20px;
+    margin-top: 25px;
+    padding-bottom: 4px;
+    color: #fff;
+}
+
+svg {
+    fill: #aaa;
+    width: 24px;
+    height: 24px;
+}
+
+a.icon {
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
+a.icon:hover svg {
+    fill: #fff;
 }
