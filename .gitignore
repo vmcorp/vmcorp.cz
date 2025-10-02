@@ -1,5 +1,5 @@
 # build output
-dist/
+# dist/ - included for GitHub Pages deployment
 # generated types
 .astro/
 
