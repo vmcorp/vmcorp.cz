@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Target, Users, Lightbulb, Award, ArrowRight } from 'lucide-astro';
+
+const founders = [
+	{
+		name: "David Velvethy",
+		role: "CEO & Co-Founder",
+		bio: "Strategic technology leader with extensive experience in AI consulting and business transformation. David specializes in bridging the gap between cutting-edge technology and tangible business value, helping mid-size organizations leverage AI for competitive advantage.",
+		expertise: ["AI Strategy", "Business Development", "Technology Evangelism", "HU-CZ Business Relations"]
+	},
+	{
+		name: "Jan Mikes",
+		role: "CTO & Co-Founder",
+		bio: "Technical architect and engineering leader with deep expertise in backend systems, DevOps, and AI implementation. Jan leads our technical delivery, ensuring robust, scalable solutions that meet the highest standards of quality and performance.",
+		expertise: ["Solution Architecture", "Backend Development", "DevOps & Cloud", "Agentic AI Systems"]
+	}
+];
+
+const values = [
+	{
+		icon: Target,
+		title: "Business-First Approach",
+		description: "Every technical decision is aligned with measurable business outcomes and ROI."
+	},
+	{
+		icon: Lightbulb,
+		title: "Innovation & Excellence",
+		description: "We stay at the forefront of technology while maintaining practical, proven solutions."
+	},
+	{
+		icon: Users,
+		title: "Partnership Mindset",
+		description: "We work as an extension of your team, committed to your long-term success."
+	},
+	{
+		icon: Award,
+		title: "Quality & Integrity",
+		description: "We deliver excellence through honest communication and uncompromising standards."
+	}
+];
+
+const stats = [
+	{ number: "10+", label: "Years Combined Experience" },
+	{ number: "50+", label: "Projects Delivered" },
+	{ number: "15+", label: "Technologies Mastered" },
+	{ number: "2", label: "Countries Connected" }
+];
+---
+
+<Layout title="About Us - Velvethy & Mikes Corporation" description="Meet the founders of Velvethy & Mikes Corporation and learn about our mission to transform mid-size organizations through strategic AI consulting.">
+	<Header />
+
+	<main class="pt-16">
+		<!-- Hero Section -->
+		<section class="relative py-20 bg-gradient-to-b from-slate-950 to-slate-900 overflow-hidden">
+			<div class="absolute inset-0 overflow-hidden opacity-20">
+				<div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+				<div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
+			</div>
+
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+				<div class="max-w-4xl mx-auto text-center">
+					<h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+						<span class="text-white">About</span>
+						<span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"> Our Story</span>
+					</h1>
+					<p class="text-xl text-slate-300 leading-relaxed">
+						Founded by technology leaders passionate about making enterprise-level AI accessible
+						to mid-size organizations.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Mission Section -->
+		<section class="py-20 bg-slate-950">
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="max-w-4xl mx-auto">
+					<div class="text-center mb-12">
+						<h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">Our Mission</h2>
+						<p class="text-xl text-slate-300 leading-relaxed">
+							To empower mid-size organizations with strategic AI consulting and technology solutions
+							that enable them to compete at enterprise levels while maintaining their agility and innovation culture.
+						</p>
+					</div>
+
+					<!-- Stats -->
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+						{stats.map((stat) => (
+							<div class="text-center">
+								<div class="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+									{stat.number}
+								</div>
+								<div class="text-slate-400 text-sm">
+									{stat.label}
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Founders Section -->
+		<section class="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="max-w-6xl mx-auto">
+					<div class="text-center mb-16">
+						<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Meet Our Founders</h2>
+						<p class="text-xl text-slate-400">
+							Leadership combining strategic vision with deep technical expertise
+						</p>
+					</div>
+
+					<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+						{founders.map((founder) => (
+							<div class="bg-slate-900/50 border border-slate-800 rounded-xl p-8 hover:border-cyan-500/50 transition-all duration-300">
+								<!-- Avatar Placeholder -->
+								<div class="w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mb-6">
+									<span class="text-white font-bold text-3xl">
+										{founder.name.split(' ').map(n => n[0]).join('')}
+									</span>
+								</div>
+
+								<h3 class="text-2xl font-bold text-white mb-2">{founder.name}</h3>
+								<p class="text-cyan-400 font-medium mb-4">{founder.role}</p>
+								<p class="text-slate-300 mb-6 leading-relaxed">{founder.bio}</p>
+
+								<div>
+									<h4 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Key Expertise</h4>
+									<div class="flex flex-wrap gap-2">
+										{founder.expertise.map((skill) => (
+											<span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-full text-sm text-slate-300">
+												{skill}
+											</span>
+										))}
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Values Section -->
+		<section class="py-20 bg-slate-950">
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="max-w-6xl mx-auto">
+					<div class="text-center mb-16">
+						<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Our Core Values</h2>
+						<p class="text-xl text-slate-400">
+							Principles that guide everything we do
+						</p>
+					</div>
+
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+						{values.map((value) => (
+							<div class="bg-slate-900/50 border border-slate-800 rounded-xl p-8 hover:border-cyan-500/50 transition-all duration-300">
+								<div class="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-xl mb-4">
+									<value.icon size={28} class="text-cyan-400" />
+								</div>
+								<h3 class="text-xl font-bold text-white mb-3">{value.title}</h3>
+								<p class="text-slate-300 leading-relaxed">{value.description}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Company Info -->
+		<section class="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="max-w-4xl mx-auto">
+					<div class="bg-slate-900/50 border border-slate-800 rounded-xl p-8">
+						<h2 class="text-2xl font-bold text-white mb-6">Company Information</h2>
+
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-300">
+							<div>
+								<h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">Legal Name</h3>
+								<p>Velvethy & Mikes Corporation</p>
+							</div>
+							<div>
+								<h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">Registration</h3>
+								<p>IČ: 28994124<br/>DIČ: CZ28994124</p>
+							</div>
+							<div class="md:col-span-2">
+								<h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">Address</h3>
+								<p>Francouzska 299/98, Vrsovice<br/>101 00 Prague 10<br/>Czech Republic</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Section -->
+		<section class="py-20 bg-slate-950">
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-4xl font-bold text-white mb-6">
+						Let's Work Together
+					</h2>
+					<p class="text-xl text-slate-400 mb-8">
+						Interested in partnering with us? We'd love to hear about your project.
+					</p>
+					<a
+						href="/contact"
+						class="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
+					>
+						<span>Get In Touch</span>
+						<ArrowRight size={20} />
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>

@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Target, Building2, Bot, Unlock, Settings, BookOpen, Globe2, Code2, Cloud, GitBranch } from 'lucide-astro';
+
+const services = [
+	{
+		title: "Tech-to-Value Architecture",
+		icon: Target,
+		description: "Strategic technology planning that directly connects technical decisions to measurable business outcomes and ROI.",
+		features: [
+			"Technology roadmapping aligned with business goals",
+			"ROI analysis and value stream mapping",
+			"Architecture decision records (ADRs)",
+			"Technical debt assessment and prioritization",
+			"Technology stack evaluation and selection"
+		]
+	},
+	{
+		title: "Solution Architecture",
+		icon: Building2,
+		description: "Enterprise-grade system design combining scalability, security, and performance for mission-critical applications.",
+		features: [
+			"Microservices and event-driven architecture",
+			"API design and integration patterns",
+			"Security architecture and compliance",
+			"Performance optimization strategies",
+			"High-availability and disaster recovery planning"
+		]
+	},
+	{
+		title: "Agentic AI System Design",
+		icon: Bot,
+		description: "Multi-agent AI systems using LangChain, LangGraph, and CrewAI for intelligent automation and decision-making.",
+		features: [
+			"LangChain and LangGraph implementation",
+			"Multi-agent orchestration with CrewAI",
+			"Custom AI agent development",
+			"RAG (Retrieval-Augmented Generation) systems",
+			"LLM integration and fine-tuning strategies"
+		]
+	},
+	{
+		title: "Open Source Integration",
+		icon: Unlock,
+		description: "Leverage powerful open-source technologies to reduce costs while maintaining enterprise-level capabilities.",
+		features: [
+			"Open source technology evaluation",
+			"License compliance and risk assessment",
+			"Community engagement strategies",
+			"Custom extension development",
+			"Support and maintenance planning"
+		]
+	},
+	{
+		title: "Backend Architecture & DevOps",
+		icon: Settings,
+		description: "Modern infrastructure with Docker, Kubernetes, and cloud platforms for reliable operations.",
+		features: [
+			"Node.js, Python, and FastAPI development",
+			"Docker containerization and orchestration",
+			"Kubernetes deployment and management",
+			"AWS, GCP, and Azure cloud infrastructure",
+			"CI/CD pipeline automation"
+		]
+	},
+	{
+		title: "Technology Evangelism & Education",
+		icon: BookOpen,
+		description: "Education and training programs to upskill your team and create a culture of innovation.",
+		features: [
+			"Technical workshops and training",
+			"Hands-on coding bootcamps",
+			"Architecture review sessions",
+			"Best practices documentation",
+			"Technology adoption programs"
+		]
+	},
+	{
+		title: "HU-CZ Business Services",
+		icon: Globe2,
+		description: "Strategic partnerships and business facilitation between Hungary and Czech Republic markets.",
+		features: [
+			"Market entry strategy consulting",
+			"Business partnership facilitation",
+			"Regulatory compliance guidance",
+			"Cultural and business practice advisory",
+			"Network building and introductions"
+		]
+	}
+];
+
+const techStack = [
+	{ category: "AI/ML Frameworks", items: ["LangChain", "LangGraph", "CrewAI", "OpenAI", "Anthropic"] },
+	{ category: "Backend", items: ["Node.js", "Python", "FastAPI", "Express", "NestJS"] },
+	{ category: "DevOps", items: ["Docker", "Kubernetes", "AWS", "GCP", "Azure"] },
+	{ category: "Architecture", items: ["Microservices", "Event-Driven", "REST APIs", "GraphQL"] }
+];
+---
+
+<Layout title="Our Services - Velvethy & Mikes Corporation" description="Comprehensive AI consulting, solution architecture, and technology transformation services for mid-size organizations.">
+	<Header />
+
+	<main class="pt-16">
+		<!-- Hero Section -->
+		<section class="relative py-20 bg-gradient-to-b from-slate-950 to-slate-900 overflow-hidden">
+			<div class="absolute inset-0 overflow-hidden opacity-20">
+				<div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+				<div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
+			</div>
+
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+				<div class="max-w-4xl mx-auto text-center">
+					<h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+						<span class="text-white">Comprehensive</span>
+						<span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"> Technology Services</span>
+					</h1>
+					<p class="text-xl text-slate-300 leading-relaxed">
+						Strategic consulting and hands-on implementation to transform your technology landscape
+						and drive measurable business outcomes.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Services Grid -->
+		<section class="py-20 bg-slate-950">
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="space-y-16">
+					{services.map((service, index) => (
+						<div class={`flex flex-col lg:flex-row gap-8 items-start ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+							<!-- Icon and Title -->
+							<div class="lg:w-2/5">
+								<div class="sticky top-24">
+									<div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-2xl mb-4">
+										<service.icon size={32} class="text-cyan-400" />
+									</div>
+									<h2 class="text-3xl font-bold text-white mb-4">
+										{service.title}
+									</h2>
+									<p class="text-slate-300 leading-relaxed">
+										{service.description}
+									</p>
+								</div>
+							</div>
+
+							<!-- Features -->
+							<div class="lg:w-3/5">
+								<div class="bg-slate-900/50 border border-slate-800 rounded-xl p-8">
+									<h3 class="text-xl font-semibold text-white mb-6">Key Capabilities</h3>
+									<ul class="space-y-4">
+										{service.features.map((feature) => (
+											<li class="flex items-start space-x-3">
+												<div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-500/20 flex items-center justify-center mt-0.5">
+													<div class="w-2 h-2 rounded-full bg-cyan-400"></div>
+												</div>
+												<span class="text-slate-300">{feature}</span>
+											</li>
+										))}
+									</ul>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Technology Stack -->
+		<section class="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="max-w-4xl mx-auto">
+					<div class="text-center mb-12">
+						<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+							Our Technology Stack
+						</h2>
+						<p class="text-xl text-slate-400">
+							Cutting-edge tools and frameworks we use to deliver exceptional results
+						</p>
+					</div>
+
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+						{techStack.map((stack) => (
+							<div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+								<div class="flex items-center space-x-3 mb-4">
+									<Code2 size={24} class="text-cyan-400" />
+									<h3 class="text-lg font-semibold text-white">{stack.category}</h3>
+								</div>
+								<div class="flex flex-wrap gap-2">
+									{stack.items.map((item) => (
+										<span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-full text-sm text-slate-300">
+											{item}
+										</span>
+									))}
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Process -->
+		<section class="py-20 bg-slate-950">
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="max-w-5xl mx-auto">
+					<div class="text-center mb-12">
+						<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+							Our Approach
+						</h2>
+						<p class="text-xl text-slate-400">
+							A proven methodology for delivering successful technology transformations
+						</p>
+					</div>
+
+					<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+						{[
+							{ step: "01", title: "Discovery", description: "Deep dive into your business needs and technical landscape" },
+							{ step: "02", title: "Strategy", description: "Design comprehensive solution aligned with your goals" },
+							{ step: "03", title: "Implementation", description: "Hands-on development with agile methodology" },
+							{ step: "04", title: "Optimization", description: "Continuous improvement and knowledge transfer" }
+						].map((phase) => (
+							<div class="relative">
+								<div class="text-6xl font-bold text-slate-800 mb-2">{phase.step}</div>
+								<h3 class="text-xl font-semibold text-white mb-2">{phase.title}</h3>
+								<p class="text-slate-400 text-sm">{phase.description}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA -->
+		<section class="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
+			<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-4xl font-bold text-white mb-6">
+						Ready to Get Started?
+					</h2>
+					<p class="text-xl text-slate-400 mb-8">
+						Let's discuss which services best fit your organization's needs.
+					</p>
+					<a
+						href="/contact"
+						class="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
+					>
+						<span>Contact Us Today</span>
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>

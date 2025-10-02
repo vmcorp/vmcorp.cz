@@ -1,0 +1,30 @@
+---
+interface Props {
+	position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+	color?: 'cyan' | 'blue' | 'purple';
+	size?: 'sm' | 'md' | 'lg';
+}
+
+const { position = 'top-right', color = 'cyan', size = 'md' } = Astro.props;
+
+const positionClasses = {
+	'top-left': 'top-0 left-0 -translate-x-1/2 -translate-y-1/2',
+	'top-right': 'top-0 right-0 translate-x-1/2 -translate-y-1/2',
+	'bottom-left': 'bottom-0 left-0 -translate-x-1/2 translate-y-1/2',
+	'bottom-right': 'bottom-0 right-0 translate-x-1/2 translate-y-1/2',
+};
+
+const colorClasses = {
+	cyan: 'bg-cyan-500/20',
+	blue: 'bg-blue-600/20',
+	purple: 'bg-purple-500/20',
+};
+
+const sizeClasses = {
+	sm: 'w-32 h-32',
+	md: 'w-64 h-64',
+	lg: 'w-96 h-96',
+};
+---
+
+<div class={`absolute ${positionClasses[position]} ${colorClasses[color]} ${sizeClasses[size]} rounded-full blur-3xl animate-float pointer-events-none`}></div>
