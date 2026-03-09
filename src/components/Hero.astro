@@ -13,7 +13,7 @@ const { headline, headlineAccent, subheadline, ctaPrimary, ctaSecondary, large =
 const heroImage = bgImage || (large ? '/hero-bg.webp' : undefined);
 ---
 
-<section class={`relative overflow-hidden ${large ? 'pt-40 pb-24 lg:pt-52 lg:pb-32' : 'pt-36 pb-16 lg:pt-44 lg:pb-20'}`}>
+<section class={`relative overflow-hidden ${large ? 'pt-28 pb-14 lg:pt-52 lg:pb-32' : 'pt-24 pb-10 lg:pt-44 lg:pb-20'}`}>
   {/* Homepage hero — contained globe, right-aligned, moderate size */}
   {heroImage && large && (
     <div class="absolute inset-0">
@@ -22,7 +22,7 @@ const heroImage = bgImage || (large ? '/hero-bg.webp' : undefined);
           src={heroImage}
           alt=""
           role="presentation"
-          class="h-auto w-auto max-h-[60vh] md:max-h-full object-contain opacity-[0.35] md:opacity-[0.55] hero-bg-pulse"
+          class="h-auto w-auto max-h-[72vh] md:max-h-full object-contain opacity-[0.35] md:opacity-[0.55] hero-bg-pulse"
           width="1536"
           height="1024"
           loading="eager"

@@ -66,7 +66,7 @@ const row2 = allTech.slice(mid);
   <SocialProofBar items={home.socialProof} />
 
   <!-- What We Do -->
-  <section class="py-24">
+  <section class="py-14 lg:py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {home.pillars.map((pillar, idx) => (
@@ -85,7 +85,7 @@ const row2 = allTech.slice(mid);
   </section>
 
   <!-- Why VMCorp -->
-  <section class="py-24 section-gradient">
+  <section class="py-14 lg:py-24 section-gradient">
     <div class="max-w-7xl mx-auto px-6">
       <div class="max-w-3xl scroll-reveal">
         <span class="section-label">{home.why.label}</span>
@@ -100,9 +100,9 @@ const row2 = allTech.slice(mid);
   </section>
 
   <!-- How We Create Value -->
-  <section class="py-24">
+  <section class="py-14 lg:py-24">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="max-w-3xl mb-16 scroll-reveal">
+      <div class="max-w-3xl mb-10 lg:mb-16 scroll-reveal">
         <span class="section-label">{home.process.label}</span>
         <h2 class="text-3xl lg:text-4xl font-bold mb-6">{home.process.title}</h2>
         <p class="text-dark-100 text-lg">{home.process.subtitle}</p>
@@ -122,7 +122,7 @@ const row2 = allTech.slice(mid);
   </section>
 
   <!-- Tech Stack -->
-  <section class="py-24 section-gradient">
+  <section class="py-14 lg:py-24 section-gradient">
     <div class="max-w-7xl mx-auto px-6 mb-10">
       <span class="section-label scroll-reveal">{home.techStack.label}</span>
       <p class="text-dark-200 text-sm mt-2 scroll-reveal">{home.techStack.subtitle}</p>
@@ -130,16 +130,16 @@ const row2 = allTech.slice(mid);
     <div class="marquee-container scroll-reveal">
       <div class="marquee-track">
         {[...row1, ...row1].map((item) => (
-          <span class="inline-flex items-center gap-3 px-6 py-3.5 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-lg whitespace-nowrap">
-            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-7 h-7 grayscale brightness-150" />}
+          <span class="inline-flex items-center gap-2 px-4 py-2.5 md:gap-3 md:px-6 md:py-3.5 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-sm md:text-lg whitespace-nowrap">
+            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-5 h-5 md:w-7 md:h-7 grayscale brightness-150" />}
             {item}
           </span>
         ))}
       </div>
       <div class="marquee-track-reverse">
         {[...row2, ...row2].map((item) => (
-          <span class="inline-flex items-center gap-3 px-6 py-3.5 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-lg whitespace-nowrap">
-            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-7 h-7 grayscale brightness-150" />}
+          <span class="inline-flex items-center gap-2 px-4 py-2.5 md:gap-3 md:px-6 md:py-3.5 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-sm md:text-lg whitespace-nowrap">
+            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-5 h-5 md:w-7 md:h-7 grayscale brightness-150" />}
             {item}
           </span>
         ))}

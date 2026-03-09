@@ -15,7 +15,7 @@ const sectionIcons = [Code, Cloud, Eye];
   <Hero headline={arch.hero.headline} subheadline={arch.hero.subheadline} bgImage="/architecture.webp" />
 
   <!-- Intro -->
-  <section class="py-24">
+  <section class="py-14 lg:py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="max-w-3xl scroll-reveal">
         <div class="space-y-6 text-dark-100 text-lg leading-relaxed">
@@ -28,7 +28,7 @@ const sectionIcons = [Code, Cloud, Eye];
 
   <!-- Technical sections -->
   {arch.sections.map((section, sIdx) => (
-    <section class={`py-24 ${sIdx % 2 === 0 ? 'section-gradient' : ''}`}>
+    <section class={`py-14 lg:py-24 ${sIdx % 2 === 0 ? 'section-gradient' : ''}`}>
       <div class="max-w-7xl mx-auto px-6">
         <h2 class="text-3xl font-bold mb-4 scroll-reveal">{section.title}</h2>
         {section.intro && <p class="text-dark-100 text-lg mb-8 max-w-3xl scroll-reveal">{section.intro}</p>}
@@ -44,7 +44,7 @@ const sectionIcons = [Code, Cloud, Eye];
   ))}
 
   <!-- Legacy -->
-  <section class="py-24">
+  <section class="py-14 lg:py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="max-w-3xl scroll-reveal">
         <div class="flex gap-4 items-start">
@@ -59,7 +59,7 @@ const sectionIcons = [Code, Cloud, Eye];
   </section>
 
   <!-- Open Source -->
-  <section class="py-24 section-gradient">
+  <section class="py-14 lg:py-24 section-gradient">
     <div class="max-w-7xl mx-auto px-6">
       <div class="max-w-3xl scroll-reveal">
         <div class="flex gap-4 items-start">
