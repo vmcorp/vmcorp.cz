@@ -19,7 +19,7 @@ export const en = {
     about: '/en/about/',
     contact: '/en/contact/',
   },
-  altLang: { code: 'cs', label: 'CZ', url: '/cs/' },
+  altLang: { code: 'cs', label: 'CZ', url: '/' },
 
   home: {
     meta: {

@@ -7,7 +7,6 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => page !== 'https://vmcorp.cz/',
       i18n: {
         defaultLocale: 'cs',
         locales: {
@@ -21,7 +20,7 @@ export default defineConfig({
     defaultLocale: 'cs',
     locales: ['cs', 'en'],
     routing: {
-      prefixDefaultLocale: true,
+      prefixDefaultLocale: false,
     },
   },
 });

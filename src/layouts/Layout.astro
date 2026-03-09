@@ -103,7 +103,7 @@ const breadcrumbSchema = breadcrumbItems.length > 1
     <link rel="canonical" href={canonicalUrl.href} />
     <link rel="alternate" hreflang={alternateLang} href={new URL(alternateUrl, Astro.site).href} />
     <link rel="alternate" hreflang={lang} href={canonicalUrl.href} />
-    <link rel="alternate" hreflang="x-default" href={new URL('/cs/', Astro.site).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).href} />
 
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />

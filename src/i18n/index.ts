@@ -11,8 +11,8 @@ export function t(lang: Lang): Translations {
 }
 
 export function getLangFromUrl(url: URL): Lang {
-  const [, langSegment] = url.pathname.split('/');
-  if (langSegment === 'en') return 'en';
+  const [, firstSegment] = url.pathname.split('/');
+  if (firstSegment === 'en') return 'en';
   return 'cs';
 }
 
@@ -22,25 +22,25 @@ export function getAlternateUrl(url: URL, targetLang: Lang): string {
 
   if (currentLang === targetLang) return pathname;
 
-  // Map CS paths to EN paths and vice versa
+  // Map CS paths (root) to EN paths (/en/) and vice versa
   const pathMappings: Record<string, string> = {
-    '/cs/': '/en/',
-    '/en/': '/cs/',
-    '/cs/sluzby/': '/en/services/',
-    '/en/services/': '/cs/sluzby/',
-    '/cs/sluzby/ai-systemy/': '/en/services/ai-systems/',
-    '/en/services/ai-systems/': '/cs/sluzby/ai-systemy/',
-    '/cs/sluzby/architektura/': '/en/services/architecture/',
-    '/en/services/architecture/': '/cs/sluzby/architektura/',
-    '/cs/sluzby/hu-cz/': '/en/services/hu-cz/',
-    '/en/services/hu-cz/': '/cs/sluzby/hu-cz/',
-    '/cs/o-nas/': '/en/about/',
-    '/en/about/': '/cs/o-nas/',
-    '/cs/kontakt/': '/en/contact/',
-    '/en/contact/': '/cs/kontakt/',
+    '/': '/en/',
+    '/en/': '/',
+    '/sluzby/': '/en/services/',
+    '/en/services/': '/sluzby/',
+    '/sluzby/ai-systemy/': '/en/services/ai-systems/',
+    '/en/services/ai-systems/': '/sluzby/ai-systemy/',
+    '/sluzby/architektura/': '/en/services/architecture/',
+    '/en/services/architecture/': '/sluzby/architektura/',
+    '/sluzby/hu-cz/': '/en/services/hu-cz/',
+    '/en/services/hu-cz/': '/sluzby/hu-cz/',
+    '/o-nas/': '/en/about/',
+    '/en/about/': '/o-nas/',
+    '/kontakt/': '/en/contact/',
+    '/en/contact/': '/kontakt/',
   };
 
   // Normalize pathname (ensure trailing slash)
   const normalized = pathname.endsWith('/') ? pathname : pathname + '/';
-  return pathMappings[normalized] || (targetLang === 'en' ? '/en/' : '/cs/');
+  return pathMappings[normalized] || (targetLang === 'en' ? '/en/' : '/');
 }
