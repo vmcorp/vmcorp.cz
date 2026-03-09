@@ -149,13 +149,20 @@ const breadcrumbSchema = breadcrumbItems.length > 1
       });
     </script>
 
-    <!-- Google Analytics -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-Q22NKL8KL5"></script>
+    <!-- Google Analytics - deferred to avoid blocking LCP -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-Q22NKL8KL5');
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-Q22NKL8KL5';
+          s.async = true;
+          document.head.appendChild(s);
+          gtag('js', new Date());
+          gtag('config', 'G-Q22NKL8KL5');
+        }, 3500);
+      });
     </script>
   </body>
 </html>

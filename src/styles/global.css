@@ -218,10 +218,6 @@
   animation: marquee-reverse 50s linear infinite;
 }
 
-.marquee-track:hover,
-.marquee-track-reverse:hover {
-  animation-play-state: paused;
-}
 
 @keyframes marquee {
   0% { transform: translateX(0); }

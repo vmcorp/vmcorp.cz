@@ -11,6 +11,7 @@ interface Props {
 
 const { headline, headlineAccent, subheadline, ctaPrimary, ctaSecondary, large = false, bgImage } = Astro.props;
 const heroImage = bgImage || (large ? '/hero-bg.webp' : undefined);
+const heroImageMobile = heroImage ? heroImage.replace('.webp', '-mobile.webp') : undefined;
 ---
 
 <section class={`relative overflow-hidden ${large ? 'pt-28 pb-14 lg:pt-52 lg:pb-32' : 'pt-24 pb-10 lg:pt-44 lg:pb-20'}`}>
@@ -18,17 +19,21 @@ const heroImage = bgImage || (large ? '/hero-bg.webp' : undefined);
   {heroImage && large && (
     <div class="absolute inset-0">
       <div class="absolute top-[10%] md:top-1/2 right-0 md:-translate-y-1/2 max-h-full max-w-[100%] md:max-w-[55%]">
-        <img
-          src={heroImage}
-          alt=""
-          role="presentation"
-          class="h-auto w-auto max-h-[72vh] md:max-h-full object-contain opacity-[0.35] md:opacity-[0.55] hero-bg-pulse"
-          width="1536"
-          height="1024"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        />
+        <picture>
+          <source media="(max-width: 767px)" srcset={heroImageMobile} width="768" height="512" />
+          <source media="(min-width: 768px)" srcset={heroImage} width="1536" height="1024" />
+          <img
+            src={heroImage}
+            alt=""
+            role="presentation"
+            class="h-auto w-auto max-h-[72vh] md:max-h-full object-contain opacity-[0.35] md:opacity-[0.55] hero-bg-pulse"
+            width="1536"
+            height="1024"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
       </div>
       <div class="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/70 to-transparent" />
       <div class="absolute inset-0 bg-gradient-to-b from-dark-900/60 via-transparent to-dark-900" />
@@ -37,17 +42,21 @@ const heroImage = bgImage || (large ? '/hero-bg.webp' : undefined);
   {/* Subpage heroes — atmospheric background, cover with gradients */}
   {heroImage && !large && (
     <div class="absolute inset-0 overflow-hidden">
-      <img
-        src={heroImage}
-        alt=""
-        role="presentation"
-        class="absolute inset-0 w-full h-full object-cover opacity-30 md:opacity-40 hero-bg-pulse-subtle"
-        width="1536"
-        height="1024"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
+      <picture>
+        <source media="(max-width: 767px)" srcset={heroImageMobile} width="768" height="512" />
+        <source media="(min-width: 768px)" srcset={heroImage} width="1536" height="1024" />
+        <img
+          src={heroImage}
+          alt=""
+          role="presentation"
+          class="absolute inset-0 w-full h-full object-cover opacity-30 md:opacity-40 hero-bg-pulse-subtle"
+          width="1536"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
       <div class="absolute inset-0 hero-gradient-animate" />
       <div class="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/80 to-dark-900/40" />
       <div class="absolute inset-0 bg-gradient-to-b from-dark-900/70 via-transparent to-dark-900" />

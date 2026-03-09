@@ -45,12 +45,45 @@ const logoMap: Record<string, string> = {
   'Mercure': '/logos/mercure.svg',
   'Loki': '/logos/loki.png',
   'Alertmanager': '/logos/alertmanager.svg',
+  'OpenAI': '/logos/openai.svg',
+  'Anthropic': '/logos/anthropic.svg',
+  'React': '/logos/react.svg',
+  'Vue.js': '/logos/vuejs.svg',
+  'Astro': '/logos/astro.svg',
+  'Tailwind CSS': '/logos/tailwindcss.svg',
+  'Symfony': '/logos/symfony.svg',
+  'MySQL': '/logos/mysql.svg',
+  'SQLite': '/logos/sqlite.svg',
+  'Pinecone': '/logos/pinecone.svg',
+  'Weaviate': '/logos/weaviate.svg',
+  'Qdrant': '/logos/qdrant.svg',
+  'Milvus': '/logos/milvus.svg',
+  'Sentry': '/logos/sentry.svg',
+  'Datadog': '/logos/datadog.svg',
+  'Nginx': '/logos/nginx.svg',
+  'Traefik': '/logos/traefik.svg',
+  'ArgoCD': '/logos/argocd.svg',
+  'Harbor': '/logos/harbor.svg',
+  'Vault': '/logos/vault.svg',
+  'MinIO': '/logos/minio.svg',
+  'GitHub Actions': '/logos/github-actions.svg',
+  'GitLab CI': '/logos/gitlab.svg',
+  'Cloudflare': '/logos/cloudflare.svg',
+  'Vercel': '/logos/vercel.svg',
+  'Supabase': '/logos/supabase.svg',
+  'Git': '/logos/git.svg',
+  'Linux': '/logos/linux.svg',
+  'Stripe': '/logos/stripe.svg',
+  'Puppeteer': '/logos/puppeteer.svg',
+  'Selenium': '/logos/selenium.svg',
+  'Playwright': '/logos/playwright.svg',
 };
 
 const allTech = home.techStack.categories.flatMap((cat) => cat.items);
-const mid = Math.ceil(allTech.length / 2);
-const row1 = allTech.slice(0, mid);
-const row2 = allTech.slice(mid);
+const third = Math.ceil(allTech.length / 3);
+const row1 = allTech.slice(0, third);
+const row2 = allTech.slice(third, third * 2);
+const row3 = allTech.slice(third * 2);
 ---
 
 <Layout title={home.meta.title} description={home.meta.description} lang={lang}>
@@ -130,16 +163,24 @@ const row2 = allTech.slice(mid);
     <div class="marquee-container scroll-reveal">
       <div class="marquee-track">
         {[...row1, ...row1].map((item) => (
-          <span class="inline-flex items-center gap-2 px-4 py-2.5 md:gap-3 md:px-6 md:py-3.5 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-sm md:text-lg whitespace-nowrap">
-            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-5 h-5 md:w-7 md:h-7 grayscale brightness-150" />}
+          <span class="inline-flex items-center gap-2 px-4 py-2.5 md:gap-3 md:px-7 md:py-4 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-sm md:text-xl whitespace-nowrap">
+            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-5 h-5 md:w-8 md:h-8 grayscale brightness-150" />}
             {item}
           </span>
         ))}
       </div>
       <div class="marquee-track-reverse">
         {[...row2, ...row2].map((item) => (
-          <span class="inline-flex items-center gap-2 px-4 py-2.5 md:gap-3 md:px-6 md:py-3.5 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-sm md:text-lg whitespace-nowrap">
-            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-5 h-5 md:w-7 md:h-7 grayscale brightness-150" />}
+          <span class="inline-flex items-center gap-2 px-4 py-2.5 md:gap-3 md:px-7 md:py-4 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-sm md:text-xl whitespace-nowrap">
+            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-5 h-5 md:w-8 md:h-8 grayscale brightness-150" />}
+            {item}
+          </span>
+        ))}
+      </div>
+      <div class="marquee-track">
+        {[...row3, ...row3].map((item) => (
+          <span class="inline-flex items-center gap-2 px-4 py-2.5 md:gap-3 md:px-7 md:py-4 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-sm md:text-xl whitespace-nowrap">
+            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-5 h-5 md:w-8 md:h-8 grayscale brightness-150" />}
             {item}
           </span>
         ))}
