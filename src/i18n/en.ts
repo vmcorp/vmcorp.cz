@@ -29,7 +29,7 @@ export const en = {
     hero: {
       headline: 'From Idea to Working Product.',
       headlineAccent: 'Fast.',
-      subheadline: 'We help businesses deliver value through technology — AI-driven systems, scalable architecture, and enterprise-grade delivery. Backed by 20+ years of hands-on experience.',
+      subheadline: 'We help scaling companies and enterprise divisions deliver production AI systems — from agentic architecture to deployment. Backed by 20+ years of experience in regulated industries.',
       ctaPrimary: "Let's Talk",
       ctaSecondary: 'How We Work',
     },
@@ -64,30 +64,130 @@ export const en = {
       text2: "We write code. We build infrastructure. We scale teams. We've delivered enterprise solutions under financial regulation across Europe, the US, and the Middle East. And we bring all of that experience to every engagement.",
       kpi: 'Our KPI: Customer satisfaction. Maximum value in the shortest time possible.',
     },
+    differentiators: {
+      label: 'What Sets Us Apart',
+      title: 'Why VMCorp',
+      cards: [
+        {
+          title: 'Agentic Architecture',
+          description: "We don't build throwaway PoCs. We design production multi-agent systems with orchestration, evaluation, and observability — built on open-source stacks, deployed in your cloud.",
+          icon: 'layers',
+        },
+        {
+          title: 'Enterprise AI Solution Design',
+          description: 'We bridge AI strategy with business reality. From discovery and impact matrix through architecture to deployment — with focus on ROI, governance, and scalability.',
+          icon: 'target',
+        },
+        {
+          title: 'Tech-to-Value Framework',
+          description: 'Reusable reference architecture + short PoV cycles = speed without quality compromise. Every project builds on proven patterns, not from scratch.',
+          icon: 'zap',
+        },
+      ],
+    },
     process: {
-      label: 'Our Approach',
-      title: 'How We Create Value',
-      subtitle: 'We deploy open-source agentic frameworks in your own cloud — no licence bloat, zero vendor lock-in. You own the code, the data, and the outcome.',
+      label: 'Delivery Model',
+      title: 'From Idea to Production in Weeks, Not Months',
+      subtitle: 'We achieve speed through reusable reference architecture and short Proof-of-Value cycles — not shortcuts. Open-source stack, your cloud, zero vendor lock-in.',
       steps: [
         {
           number: '01',
-          title: 'Discovery & Prioritisation',
-          description: 'Impact-vs-complexity matrix aligned to your revenue goals.',
+          title: 'Discovery',
+          description: 'Map operations, identify automation opportunities, build an impact-vs-complexity matrix. 1–2 weeks.',
         },
         {
           number: '02',
-          title: 'Architecture & Design',
-          description: 'Reference stacks chosen to fit your cloud strategy, not our preferences.',
+          title: 'Architecture Blueprint',
+          description: 'Select reference stack, design agent architecture, define technical KPIs. Built on proven patterns. 1 week.',
         },
         {
           number: '03',
-          title: 'Build & Deploy',
-          description: 'Modular, testable, observable systems with agentic KPIs.',
+          title: 'Proof-of-Value Agent',
+          description: 'Working agent deployed in your cloud, meeting agreed KPIs. Real results, not a PowerPoint. 2–4 weeks.',
         },
         {
           number: '04',
-          title: 'Iterate & Scale',
-          description: 'Continuous improvement with real metrics: accuracy, latency, cost-per-run.',
+          title: 'Production Deployment',
+          description: 'Scale, monitor, optimise. From one agent to multi-agent orchestration with continuous evaluation.',
+        },
+      ],
+    },
+    architecture: {
+      label: 'Modern AI Architecture',
+      title: 'Reference Stack for Production AI',
+      subtitle: 'Multi-layered architecture covering the full lifecycle of an agentic AI system — from orchestration to observability.',
+      layers: [
+        {
+          name: 'AI Agents',
+          description: 'Autonomous agents solving specific business tasks',
+          tools: ['Custom Agents', 'RAG Pipelines', 'Tool-use Agents', 'Multi-agent Workflows'],
+        },
+        {
+          name: 'Orchestration',
+          description: 'Routing, coordination, and management of agents',
+          tools: ['LangChain', 'LangGraph', 'CrewAI', 'AutoGen', 'MCP', 'A2A'],
+        },
+        {
+          name: 'Evaluation & Observability',
+          description: 'Quality measurement, tuning, and production monitoring',
+          tools: ['LangFuse', 'LangSmith', 'OpenTelemetry', 'Grafana', 'Prometheus'],
+        },
+        {
+          name: 'Infrastructure',
+          description: 'Cloud, compute, storage, and deployment',
+          tools: ['Azure', 'AWS', 'GCP', 'Databricks', 'Kubernetes', 'Docker'],
+        },
+      ],
+    },
+    safety: {
+      label: 'AI System Safety',
+      title: 'Safe AI Systems by Design',
+      subtitle: 'Enterprise AI needs more than accuracy — it needs security, auditability, and risk management from day one.',
+      principles: [
+        {
+          title: 'Secure Agent Permissions',
+          description: 'Agents operate with minimum privileges. Every action is authorised, every data access is controlled.',
+          icon: 'shield',
+        },
+        {
+          title: 'Observability & Monitoring',
+          description: 'Full transparency into agent decision-making. Traces, logs, and metrics for every step — you know exactly what the agent did and why.',
+          icon: 'eye',
+        },
+        {
+          title: 'Data Governance',
+          description: 'Data stays in your cloud. Access control, encryption, audit trail. GDPR and regulatory compliance built in.',
+          icon: 'database',
+        },
+        {
+          title: 'Risk-Aware Deployment',
+          description: 'Gradual rollout, human-in-the-loop where needed, automatic fallbacks. Governance protects value, not slows you down.',
+          icon: 'alert-triangle',
+        },
+      ],
+    },
+    cases: {
+      label: 'Proof',
+      title: 'Selected Architecture Engagements',
+      subtitle: 'Real-world impact — from architecture design to production deployment.',
+      items: [
+        {
+          industry: 'Financial Services',
+          problem: 'A regulated financial institution needed to automate manual compliance processes handling thousands of documents monthly.',
+          architecture: 'Multi-agent system with RAG pipeline, secure document processing, and audit trail. Deployed in private cloud with full observability.',
+          outcome: '70% reduction in manual work, full audit trail for the regulator, deployed in 6 weeks.',
+        },
+        {
+          industry: 'Telecommunications',
+          problem: 'A telco operator needed to streamline customer support and reduce escalations to L2/L3 teams.',
+          architecture: 'Orchestrated agent system with access to internal systems via MCP, evaluation via LangFuse, real-time monitoring.',
+          outcome: '40% fewer escalations, average resolution time cut by 55%, ROI achieved in 3 months.',
+        },
+        {
+          industry: 'Energy',
+          problem: 'An energy company needed to consolidate data from 12+ legacy systems for predictive maintenance.',
+          architecture: 'Data integration pipeline with agent layer for anomaly detection, Kubernetes orchestration, Grafana dashboards.',
+          outcome: 'Unified data view, 30% reduction in unplanned downtime, scalable architecture for further use-cases.',
         },
       ],
     },

@@ -1,5 +1,5 @@
 ---
-import { Brain, Blocks, Globe, Target, Heart, Server, Mic } from '@lucide/astro';
+import { Brain, Blocks, Globe, Target, Heart, Server, Mic, Layers, Zap, Shield, Eye, Database, AlertTriangle } from '@lucide/astro';
 
 interface Props {
   title: string;
@@ -20,6 +20,12 @@ const iconMap: Record<string, any> = {
   heart: Heart,
   server: Server,
   mic: Mic,
+  layers: Layers,
+  zap: Zap,
+  shield: Shield,
+  eye: Eye,
+  database: Database,
+  'alert-triangle': AlertTriangle,
 };
 const Icon = iconMap[icon] || Brain;
 ---

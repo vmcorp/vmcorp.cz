@@ -117,22 +117,28 @@ const row3 = allTech.slice(third * 2);
     </div>
   </section>
 
-  <!-- Proč VMCorp -->
+  <!-- Co nás odlišuje -->
   <section class="py-14 lg:py-24 section-gradient">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="max-w-3xl scroll-reveal">
-        <span class="section-label">{home.why.label}</span>
-        <h2 class="text-3xl lg:text-4xl font-bold mb-8">{home.why.title}</h2>
-        <div class="space-y-6 text-dark-100 text-lg leading-relaxed">
-          <p>{home.why.text}</p>
-          <p>{home.why.text2}</p>
-          <p class="text-gold-400 font-semibold">{home.why.kpi}</p>
-        </div>
+      <div class="max-w-3xl mb-10 lg:mb-16 scroll-reveal">
+        <span class="section-label">{home.differentiators.label}</span>
+        <h2 class="text-3xl lg:text-4xl font-bold">{home.differentiators.title}</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {home.differentiators.cards.map((card, idx) => (
+          <div class={`scroll-reveal stagger-${idx + 1}`}>
+            <ServiceCard
+              title={card.title}
+              description={card.description}
+              icon={card.icon}
+            />
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Jak tvoříme hodnotu -->
+  <!-- Delivery model -->
   <section class="py-14 lg:py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="max-w-3xl mb-10 lg:mb-16 scroll-reveal">
@@ -150,6 +156,113 @@ const row3 = allTech.slice(third * 2);
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Moderní AI architektura -->
+  <section class="py-14 lg:py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-10 lg:mb-16 scroll-reveal">
+        <span class="section-label">{home.architecture.label}</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6">{home.architecture.title}</h2>
+        <p class="text-dark-100 text-lg">{home.architecture.subtitle}</p>
+      </div>
+      <div class="space-y-4 scroll-reveal">
+        {home.architecture.layers.map((layer, idx) => {
+          const borderClasses = [
+            'border-l-gold-400',
+            'border-l-gold-400/80',
+            'border-l-gold-400/60',
+            'border-l-gold-400/40',
+          ];
+          return (
+            <div class={`card !rounded-xl !p-6 border-l-2 ${borderClasses[idx]}`}>
+              <div class="flex flex-col md:flex-row md:items-center gap-4">
+                <div class="md:w-1/3">
+                  <h3 class="text-lg font-semibold">{layer.name}</h3>
+                  <p class="text-dark-200 text-sm mt-1">{layer.description}</p>
+                </div>
+                <div class="md:w-2/3 flex flex-wrap gap-2">
+                  {layer.tools.map((tool) => (
+                    <span class="px-3 py-1.5 bg-dark-800/80 border border-dark-400/30 rounded-lg text-dark-100 text-sm">{tool}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Safe AI Systems -->
+  <section class="py-14 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-10 lg:mb-16 scroll-reveal">
+        <span class="section-label">{home.safety.label}</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6">{home.safety.title}</h2>
+        <p class="text-dark-100 text-lg">{home.safety.subtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {home.safety.principles.map((principle, idx) => (
+          <div class={`scroll-reveal stagger-${idx + 1}`}>
+            <ServiceCard
+              title={principle.title}
+              description={principle.description}
+              icon={principle.icon}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Reference / Case Studies -->
+  <section class="py-14 lg:py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-10 lg:mb-16 scroll-reveal">
+        <span class="section-label">{home.cases.label}</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6">{home.cases.title}</h2>
+        <p class="text-dark-100 text-lg">{home.cases.subtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {home.cases.items.map((caseItem, idx) => (
+          <div class={`scroll-reveal stagger-${idx + 1}`}>
+            <div class="card h-full flex flex-col">
+              <span class="text-gold-400 text-sm font-semibold tracking-wider uppercase mb-4">{caseItem.industry}</span>
+              <div class="space-y-4 flex-1">
+                <div>
+                  <h4 class="text-xs font-semibold text-dark-200 uppercase tracking-wider mb-1.5">Problem</h4>
+                  <p class="text-dark-100 text-sm leading-relaxed">{caseItem.problem}</p>
+                </div>
+                <div>
+                  <h4 class="text-xs font-semibold text-dark-200 uppercase tracking-wider mb-1.5">Architektura</h4>
+                  <p class="text-dark-100 text-sm leading-relaxed">{caseItem.architecture}</p>
+                </div>
+                <div>
+                  <h4 class="text-xs font-semibold text-dark-200 uppercase tracking-wider mb-1.5">Výsledek</h4>
+                  <p class="text-gold-300 text-sm font-medium leading-relaxed">{caseItem.outcome}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Proč VMCorp -->
+  <section class="py-14 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal">
+        <span class="section-label">{home.why.label}</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mb-8">{home.why.title}</h2>
+        <div class="space-y-6 text-dark-100 text-lg leading-relaxed">
+          <p>{home.why.text}</p>
+          <p>{home.why.text2}</p>
+          <p class="text-gold-400 font-semibold">{home.why.kpi}</p>
+        </div>
       </div>
     </div>
   </section>
