@@ -1,23 +1,20 @@
 ---
-// Root page — detect browser locale and redirect
+// Root page — detect browser locale and redirect instantly
 ---
 
 <html lang="cs">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      var l = (navigator.language || '').slice(0, 2);
+      window.location.replace(l === 'en' ? '/en/' : '/cs/');
+    </script>
     <meta http-equiv="refresh" content="0;url=/cs/" />
     <meta name="robots" content="noindex, follow" />
     <link rel="canonical" href="https://vmcorp.cz/cs/" />
     <link rel="alternate" hreflang="cs" href="https://vmcorp.cz/cs/" />
     <link rel="alternate" hreflang="en" href="https://vmcorp.cz/en/" />
     <link rel="alternate" hreflang="x-default" href="https://vmcorp.cz/cs/" />
-    <title>VMCorp — Redirecting...</title>
-    <script is:inline>
-      const lang = navigator.language || navigator.userLanguage || 'cs';
-      const isEn = lang.startsWith('en');
-      window.location.replace(isEn ? '/en/' : '/cs/');
-    </script>
+    <title>VMCorp</title>
   </head>
   <body></body>
 </html>
