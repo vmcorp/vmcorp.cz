@@ -2,13 +2,44 @@
 import Layout from '@/layouts/Layout.astro';
 ---
 
-<Layout title="404 — VMCorp" description="Stránka nenalezena" lang="cs">
-  <section class="min-h-[70vh] flex items-center justify-center">
+<Layout title="404 — VMCorp" description="Page not found" lang="cs">
+  <section class="flex items-center justify-center pt-40 pb-16">
     <div class="text-center px-6">
-      <span class="text-8xl font-bold text-gold-400 block mb-4">404</span>
-      <h1 class="text-2xl font-semibold text-dark-50 mb-3">Stránka nenalezena</h1>
-      <p class="text-dark-100 mb-8 max-w-md mx-auto">Tato stránka neexistuje nebo byla přesunuta.</p>
-      <a href="/" class="btn-primary">Zpět na úvodní stránku</a>
+      <span class="text-404 select-none block mb-6" data-text="404">404</span>
+      <h1 class="text-xl font-semibold text-dark-50 mb-2" id="not-found-title">Stránka nenalezena</h1>
+      <p class="text-dark-100 text-sm mb-10 max-w-sm mx-auto" id="not-found-desc">Tato stránka neexistuje nebo byla přesunuta.</p>
+      <a href="/" class="btn-primary" id="not-found-cta">Zpět na úvodní stránku</a>
     </div>
   </section>
 </Layout>
+
+<style>
+  .text-404 {
+    font-size: clamp(6rem, 18vw, 12rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #C8A84E 0%, #F5E6A3 40%, #C8A84E 70%, #876E2E 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer-slow 6s ease-in-out infinite;
+  }
+
+  @keyframes shimmer-slow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+</style>
+
+<script is:inline>
+  if ((navigator.language || '').startsWith('en')) {
+    var t = document.getElementById('not-found-title');
+    var d = document.getElementById('not-found-desc');
+    var c = document.getElementById('not-found-cta');
+    if (t) t.textContent = 'Page not found';
+    if (d) d.textContent = "This page doesn't exist or has been moved.";
+    if (c) { c.textContent = 'Back to homepage'; c.href = '/'; }
+  }
+</script>
