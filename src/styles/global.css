@@ -228,3 +228,29 @@
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
 }
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal-left {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .marquee-track,
+  .marquee-track-reverse {
+    animation: none;
+  }
+
+  .hero-bg-pulse,
+  .hero-bg-pulse-subtle,
+  .gold-shimmer,
+  .hero-gradient-animate {
+    animation: none;
+  }
+
+  .hero-gradient {
+    animation: none;
+  }
+}

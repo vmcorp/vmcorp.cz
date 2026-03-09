@@ -24,7 +24,7 @@ export const cs = {
   home: {
     meta: {
       title: 'VMCorp — Od nápadu k fungujícímu produktu. Rychle.',
-      description: 'Pomáháme firmám dodávat hodnotu pomocí technologií. AI systémy, škálovatelná architektura a enterprise dodávka. 20+ let zkušeností.',
+      description: 'Pomáháme rostoucím firmám a enterprise divizím dodávat produkční AI systémy a škálovatelnou architekturu. 20+ let zkušeností v regulovaných odvětvích.',
     },
     hero: {
       headline: 'Od nápadu k fungujícímu produktu.',
@@ -112,83 +112,13 @@ export const cs = {
         },
       ],
     },
-    architecture: {
-      label: 'Moderní AI architektura',
-      title: 'Referenční stack pro produkční AI',
-      subtitle: 'Vícevrstvá architektura pokrývající celý životní cyklus agentního AI systému — od orchestrace po observabilitu.',
-      layers: [
-        {
-          name: 'AI agenti',
-          description: 'Autonomní agenti řešící konkrétní byznys úlohy',
-          tools: ['Custom Agents', 'RAG Pipelines', 'Tool-use Agents', 'Multi-agent Workflows'],
-        },
-        {
-          name: 'Orchestrace',
-          description: 'Řízení, routování a koordinace agentů',
-          tools: ['LangChain', 'LangGraph', 'CrewAI', 'AutoGen', 'MCP', 'A2A'],
-        },
-        {
-          name: 'Evaluace & Observabilita',
-          description: 'Měření kvality, ladění a monitoring v produkci',
-          tools: ['LangFuse', 'LangSmith', 'OpenTelemetry', 'Grafana', 'Prometheus'],
-        },
-        {
-          name: 'Infrastruktura',
-          description: 'Cloud, compute, storage a deployment',
-          tools: ['Azure', 'AWS', 'GCP', 'Databricks', 'Kubernetes', 'Docker'],
-        },
-      ],
-    },
-    safety: {
-      label: 'Bezpečnost AI systémů',
-      title: 'Safe AI Systems by Design',
-      subtitle: 'Enterprise AI potřebuje víc než přesnost — potřebuje bezpečnost, auditovatelnost a řízení rizik od prvního dne.',
-      principles: [
-        {
-          title: 'Bezpečná oprávnění agentů',
-          description: 'Agenti operují s minimálními oprávněními. Každá akce je autorizována, každý přístup k datům řízený.',
-          icon: 'shield',
-        },
-        {
-          title: 'Observabilita & Monitoring',
-          description: 'Plná transparentnost rozhodování agentů. Traces, logy a metriky pro každý krok — víte přesně, co agent udělal a proč.',
-          icon: 'eye',
-        },
-        {
-          title: 'Data Governance',
-          description: 'Data zůstávají ve vašem cloudu. Řízení přístupu, šifrování, audit trail. Soulad s GDPR a regulatorními požadavky.',
-          icon: 'database',
-        },
-        {
-          title: 'Risk-Aware nasazení',
-          description: 'Postupný rollout, human-in-the-loop kde je třeba, automatické fallbacky. Governance chrání hodnotu, nezpomaluje.',
-          icon: 'alert-triangle',
-        },
-      ],
-    },
-    cases: {
-      label: 'Reference',
-      title: 'Vybrané architektonické zakázky',
-      subtitle: 'Ukázky reálného dopadu — od návrhu architektury po produkční nasazení.',
+    proof: {
+      label: 'Výsledky',
+      title: 'Měřitelný dopad v praxi',
       items: [
-        {
-          industry: 'Finanční služby',
-          problem: 'Regulovaná finanční instituce potřebovala automatizovat manuální compliance procesy zpracovávající tisíce dokumentů měsíčně.',
-          architecture: 'Multi-agentní systém s RAG pipeline, secure document processing a audit trail. Nasazeno v privátním cloudu s plnou observabilitou.',
-          outcome: '70% redukce manuální práce, plný audit trail pro regulátora, nasazení za 6 týdnů.',
-        },
-        {
-          industry: 'Telekomunikace',
-          problem: 'Telco operátor hledal způsob, jak zefektivnit zákaznický support a snížit eskalace na L2/L3 týmy.',
-          architecture: 'Orchestrovaný agentní systém s přístupem k interním systémům přes MCP, evaluace přes LangFuse, real-time monitoring.',
-          outcome: '40% snížení eskalací, průměrná doba řešení zkrácena o 55%, ROI za 3 měsíce.',
-        },
-        {
-          industry: 'Energetika',
-          problem: 'Energetická společnost potřebovala konsolidovat data z 12+ legacy systémů pro prediktivní údržbu.',
-          architecture: 'Data integration pipeline s agentní vrstvou pro anomaly detection, Kubernetes orchestrace, Grafana dashboardy.',
-          outcome: 'Jednotný datový pohled, 30% redukce neplánovaných odstávek, škálovatelná architektura.',
-        },
+        { metric: '70%', description: 'redukce manuální práce', industry: 'Finanční služby' },
+        { metric: '55%', description: 'zkrácení doby řešení', industry: 'Telekomunikace' },
+        { metric: '30%', description: 'snížení neplánovaných odstávek', industry: 'Energetika' },
       ],
     },
     techStack: {
@@ -290,19 +220,88 @@ export const cs = {
         { title: 'Škálování a optimalizace', text: 'Od jednoho agenta k multi-agentní orchestraci. Průběžné vyhodnocování, monitoring přes LangFuse a iterativní zlepšování.' },
       ],
     },
-    tech: {
-      title: 'Technologie',
+    architecture: {
+      label: 'Moderní AI architektura',
+      title: 'Referenční stack pro produkční AI',
+      subtitle: 'Vícevrstvá architektura pokrývající celý životní cyklus agentního AI systému — od orchestrace po observabilitu.',
+      layers: [
+        {
+          name: 'AI agenti',
+          description: 'Autonomní agenti řešící konkrétní byznys úlohy',
+          tools: ['Custom Agents', 'RAG Pipelines', 'Tool-use Agents', 'Multi-agent Workflows', 'Python', 'TypeScript', 'FastAPI'],
+        },
+        {
+          name: 'Orchestrace',
+          description: 'Řízení, routování a koordinace agentů',
+          tools: ['LangChain', 'LangGraph', 'CrewAI', 'AutoGen', 'MCP', 'A2A'],
+        },
+        {
+          name: 'Evaluace & Observabilita',
+          description: 'Měření kvality, ladění a monitoring v produkci',
+          tools: ['LangFuse', 'LangSmith', 'OpenTelemetry', 'Grafana', 'Prometheus'],
+        },
+        {
+          name: 'Infrastruktura',
+          description: 'Cloud, compute, storage a deployment',
+          tools: ['Azure', 'AWS', 'GCP', 'Databricks', 'Kubernetes', 'Docker'],
+        },
+      ],
+    },
+    safety: {
+      label: 'Bezpečnost AI systémů',
+      title: 'Bezpečné AI systémy od základu',
+      subtitle: 'Enterprise AI potřebuje víc než přesnost — potřebuje bezpečnost, auditovatelnost a řízení rizik od prvního dne.',
+      principles: [
+        {
+          title: 'Bezpečná oprávnění agentů',
+          description: 'Agenti operují s minimálními oprávněními. Každá akce je autorizována, každý přístup k datům řízený.',
+          icon: 'shield',
+        },
+        {
+          title: 'Observabilita & Monitoring',
+          description: 'Plná transparentnost rozhodování agentů. Traces, logy a metriky pro každý krok — víte přesně, co agent udělal a proč.',
+          icon: 'eye',
+        },
+        {
+          title: 'Data Governance',
+          description: 'Data zůstávají ve vašem cloudu. Řízení přístupu, šifrování, audit trail. Soulad s GDPR a regulatorními požadavky.',
+          icon: 'database',
+        },
+        {
+          title: 'Risk-Aware nasazení',
+          description: 'Postupný rollout, human-in-the-loop kde je třeba, automatické fallbacky. Governance chrání hodnotu, nezpomaluje.',
+          icon: 'alert-triangle',
+        },
+      ],
+    },
+    cases: {
+      label: 'Reference',
+      title: 'Vybrané architektonické zakázky',
+      subtitle: 'Ukázky reálného dopadu — od návrhu architektury po produkční nasazení.',
       items: [
-        { name: 'Orchestrace', value: 'LangChain, LangGraph, CrewAI, AutoGen' },
-        { name: 'Observabilita', value: 'LangFuse, LangFlow' },
-        { name: 'Integrace', value: 'MCP Gateways, A2A Protocol' },
-        { name: 'Infrastruktura', value: 'Databricks/Mosaic AI, Azure OpenAI, Google Vertex AI' },
-        { name: 'Vlastní vývoj', value: 'Python, TypeScript, FastAPI' },
+        {
+          industry: 'Finanční služby',
+          problem: 'Regulovaná finanční instituce potřebovala automatizovat manuální compliance procesy zpracovávající tisíce dokumentů měsíčně.',
+          architecture: 'Multi-agentní systém s RAG pipeline, secure document processing a audit trail. Nasazeno v privátním cloudu s plnou observabilitou.',
+          outcome: '70% redukce manuální práce, plný audit trail pro regulátora, nasazení za 6 týdnů.',
+        },
+        {
+          industry: 'Telekomunikace',
+          problem: 'Telco operátor hledal způsob, jak zefektivnit zákaznický support a snížit eskalace na L2/L3 týmy.',
+          architecture: 'Orchestrovaný agentní systém s přístupem k interním systémům přes MCP, evaluace přes LangFuse, real-time monitoring.',
+          outcome: '40% snížení eskalací, průměrná doba řešení zkrácena o 55%, ROI za 3 měsíce.',
+        },
+        {
+          industry: 'Energetika',
+          problem: 'Energetická společnost potřebovala konsolidovat data z 12+ legacy systémů pro prediktivní údržbu.',
+          architecture: 'Data integration pipeline s agentní vrstvou pro anomaly detection, Kubernetes orchestrace, Grafana dashboardy.',
+          outcome: 'Jednotný datový pohled, 30% redukce neplánovaných odstávek, škálovatelná architektura.',
+        },
       ],
     },
     audience: {
       title: 'Pro koho je to',
-      text: 'Střední firmy, které chtějí automatizovat opakující se procesy, ale potřebují řešení na míru — ne krabicový SaaS. Organizace ve financích, telekomunikacích, energetice a veřejném sektoru, které potřebují enterprise AI s řádným governance.',
+      text: 'Rostoucí firmy a enterprise divize, které chtějí automatizovat opakující se procesy, ale potřebují řešení na míru — ne krabicový SaaS. Organizace ve financích, telekomunikacích, energetice a veřejném sektoru, které potřebují enterprise AI s řádným governance.',
     },
     cta: {
       title: 'Chcete vidět, co agentní AI může udělat pro váš byznys?',

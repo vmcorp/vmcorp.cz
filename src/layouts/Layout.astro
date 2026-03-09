@@ -39,7 +39,7 @@ const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'sales',
-    url: new URL(lang === 'cs' ? '/cs/kontakt/' : '/en/contact/', Astro.site).href,
+    url: new URL(lang === 'cs' ? '/kontakt/' : '/en/contact/', Astro.site).href,
   },
 };
 
@@ -51,11 +51,26 @@ const websiteSchema = {
   inLanguage: [lang],
 };
 
+const breadcrumbNameMap: Record<string, string> = {
+  en: 'Home',
+  sluzby: 'Služby',
+  services: 'Services',
+  'ai-systemy': 'AI systémy a automatizace',
+  'ai-systems': 'AI Systems & Automation',
+  architektura: 'Architektura a vývoj',
+  architecture: 'Architecture & Development',
+  'hu-cz': 'HU-CZ Business Bridge',
+  'o-nas': 'O nás',
+  about: 'About',
+  kontakt: 'Kontakt',
+  contact: 'Contact',
+};
+
 const breadcrumbParts = Astro.url.pathname.split('/').filter(Boolean);
 const breadcrumbItems = breadcrumbParts.map((part, idx) => ({
   '@type': 'ListItem',
   position: idx + 1,
-  name: part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
+  name: breadcrumbNameMap[part] || part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
   item: new URL(breadcrumbParts.slice(0, idx + 1).join('/') + '/', Astro.site).href,
 }));
 
@@ -85,6 +100,7 @@ const breadcrumbSchema = breadcrumbItems.length > 1
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="VMCorp — AI Systems & Scalable Architecture" />
     <meta property="og:site_name" content="VMCorp" />
     <meta property="og:locale" content={lang === 'cs' ? 'cs_CZ' : 'en_US'} />
     <meta property="og:locale:alternate" content={lang === 'cs' ? 'en_US' : 'cs_CZ'} />
@@ -96,8 +112,15 @@ const breadcrumbSchema = breadcrumbItems.length > 1
     <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Favicon & Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/favicon.svg" color="#C8A84E" />
+    <meta name="msapplication-TileColor" content="#09090B" />
+
+    <!-- Preconnect -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
     <!-- Canonical & Alternate Languages -->
     <link rel="canonical" href={canonicalUrl.href} />
@@ -139,13 +162,14 @@ const breadcrumbSchema = breadcrumbItems.length > 1
         observer.observe(el);
       });
 
-      // Card spotlight glow — follows cursor
+      // Card spotlight glow — follows cursor (cached for performance)
+      const cards = document.querySelectorAll('.card');
       document.addEventListener('mousemove', (e) => {
-        document.querySelectorAll('.card').forEach((card) => {
-          const rect = card.getBoundingClientRect();
-          card.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
-          card.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
-        });
+        for (const card of cards) {
+          const rect = (card as HTMLElement).getBoundingClientRect();
+          (card as HTMLElement).style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
+          (card as HTMLElement).style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
+        }
       });
     </script>
 

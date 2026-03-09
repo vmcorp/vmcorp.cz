@@ -1,0 +1,26 @@
+{
+  "name": "VMCorp",
+  "short_name": "VMCorp",
+  "description": "Velvethy & Mikes Corporation s.r.o.",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#09090B",
+  "background_color": "#09090B",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

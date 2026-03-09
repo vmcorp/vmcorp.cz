@@ -24,7 +24,7 @@ export const en = {
   home: {
     meta: {
       title: 'VMCorp — From Idea to Working Product. Fast.',
-      description: 'We help businesses deliver value through technology. AI systems, scalable architecture, and enterprise-grade delivery. 20+ years of experience.',
+      description: 'We help scaling companies and enterprise divisions deliver production AI systems and scalable architecture. 20+ years of experience in regulated industries.',
     },
     hero: {
       headline: 'From Idea to Working Product.',
@@ -112,83 +112,13 @@ export const en = {
         },
       ],
     },
-    architecture: {
-      label: 'Modern AI Architecture',
-      title: 'Reference Stack for Production AI',
-      subtitle: 'Multi-layered architecture covering the full lifecycle of an agentic AI system — from orchestration to observability.',
-      layers: [
-        {
-          name: 'AI Agents',
-          description: 'Autonomous agents solving specific business tasks',
-          tools: ['Custom Agents', 'RAG Pipelines', 'Tool-use Agents', 'Multi-agent Workflows'],
-        },
-        {
-          name: 'Orchestration',
-          description: 'Routing, coordination, and management of agents',
-          tools: ['LangChain', 'LangGraph', 'CrewAI', 'AutoGen', 'MCP', 'A2A'],
-        },
-        {
-          name: 'Evaluation & Observability',
-          description: 'Quality measurement, tuning, and production monitoring',
-          tools: ['LangFuse', 'LangSmith', 'OpenTelemetry', 'Grafana', 'Prometheus'],
-        },
-        {
-          name: 'Infrastructure',
-          description: 'Cloud, compute, storage, and deployment',
-          tools: ['Azure', 'AWS', 'GCP', 'Databricks', 'Kubernetes', 'Docker'],
-        },
-      ],
-    },
-    safety: {
-      label: 'AI System Safety',
-      title: 'Safe AI Systems by Design',
-      subtitle: 'Enterprise AI needs more than accuracy — it needs security, auditability, and risk management from day one.',
-      principles: [
-        {
-          title: 'Secure Agent Permissions',
-          description: 'Agents operate with minimum privileges. Every action is authorised, every data access is controlled.',
-          icon: 'shield',
-        },
-        {
-          title: 'Observability & Monitoring',
-          description: 'Full transparency into agent decision-making. Traces, logs, and metrics for every step — you know exactly what the agent did and why.',
-          icon: 'eye',
-        },
-        {
-          title: 'Data Governance',
-          description: 'Data stays in your cloud. Access control, encryption, audit trail. GDPR and regulatory compliance built in.',
-          icon: 'database',
-        },
-        {
-          title: 'Risk-Aware Deployment',
-          description: 'Gradual rollout, human-in-the-loop where needed, automatic fallbacks. Governance protects value, not slows you down.',
-          icon: 'alert-triangle',
-        },
-      ],
-    },
-    cases: {
-      label: 'Proof',
-      title: 'Selected Architecture Engagements',
-      subtitle: 'Real-world impact — from architecture design to production deployment.',
+    proof: {
+      label: 'Results',
+      title: 'Measurable Impact in Practice',
       items: [
-        {
-          industry: 'Financial Services',
-          problem: 'A regulated financial institution needed to automate manual compliance processes handling thousands of documents monthly.',
-          architecture: 'Multi-agent system with RAG pipeline, secure document processing, and audit trail. Deployed in private cloud with full observability.',
-          outcome: '70% reduction in manual work, full audit trail for the regulator, deployed in 6 weeks.',
-        },
-        {
-          industry: 'Telecommunications',
-          problem: 'A telco operator needed to streamline customer support and reduce escalations to L2/L3 teams.',
-          architecture: 'Orchestrated agent system with access to internal systems via MCP, evaluation via LangFuse, real-time monitoring.',
-          outcome: '40% fewer escalations, average resolution time cut by 55%, ROI achieved in 3 months.',
-        },
-        {
-          industry: 'Energy',
-          problem: 'An energy company needed to consolidate data from 12+ legacy systems for predictive maintenance.',
-          architecture: 'Data integration pipeline with agent layer for anomaly detection, Kubernetes orchestration, Grafana dashboards.',
-          outcome: 'Unified data view, 30% reduction in unplanned downtime, scalable architecture for further use-cases.',
-        },
+        { metric: '70%', description: 'reduction in manual work', industry: 'Financial Services' },
+        { metric: '55%', description: 'faster resolution time', industry: 'Telecommunications' },
+        { metric: '30%', description: 'less unplanned downtime', industry: 'Energy' },
       ],
     },
     techStack: {
@@ -290,19 +220,88 @@ export const en = {
         { title: 'Scale & Optimise', text: 'From one agent to a multi-agent orchestration system. Continuous evaluation, monitoring via LangFuse, and iterative improvement.' },
       ],
     },
-    tech: {
-      title: 'Technologies',
+    architecture: {
+      label: 'Modern AI Architecture',
+      title: 'Reference Stack for Production AI',
+      subtitle: 'Multi-layered architecture covering the full lifecycle of an agentic AI system — from orchestration to observability.',
+      layers: [
+        {
+          name: 'AI Agents',
+          description: 'Autonomous agents solving specific business tasks',
+          tools: ['Custom Agents', 'RAG Pipelines', 'Tool-use Agents', 'Multi-agent Workflows', 'Python', 'TypeScript', 'FastAPI'],
+        },
+        {
+          name: 'Orchestration',
+          description: 'Routing, coordination, and management of agents',
+          tools: ['LangChain', 'LangGraph', 'CrewAI', 'AutoGen', 'MCP', 'A2A'],
+        },
+        {
+          name: 'Evaluation & Observability',
+          description: 'Quality measurement, tuning, and production monitoring',
+          tools: ['LangFuse', 'LangSmith', 'OpenTelemetry', 'Grafana', 'Prometheus'],
+        },
+        {
+          name: 'Infrastructure',
+          description: 'Cloud, compute, storage, and deployment',
+          tools: ['Azure', 'AWS', 'GCP', 'Databricks', 'Kubernetes', 'Docker'],
+        },
+      ],
+    },
+    safety: {
+      label: 'AI System Safety',
+      title: 'Safe AI Systems by Design',
+      subtitle: 'Enterprise AI needs more than accuracy — it needs security, auditability, and risk management from day one.',
+      principles: [
+        {
+          title: 'Secure Agent Permissions',
+          description: 'Agents operate with minimum privileges. Every action is authorised, every data access is controlled.',
+          icon: 'shield',
+        },
+        {
+          title: 'Observability & Monitoring',
+          description: 'Full transparency into agent decision-making. Traces, logs, and metrics for every step — you know exactly what the agent did and why.',
+          icon: 'eye',
+        },
+        {
+          title: 'Data Governance',
+          description: 'Data stays in your cloud. Access control, encryption, audit trail. GDPR and regulatory compliance built in.',
+          icon: 'database',
+        },
+        {
+          title: 'Risk-Aware Deployment',
+          description: 'Gradual rollout, human-in-the-loop where needed, automatic fallbacks. Governance protects value, not slows you down.',
+          icon: 'alert-triangle',
+        },
+      ],
+    },
+    cases: {
+      label: 'Proof',
+      title: 'Selected Architecture Engagements',
+      subtitle: 'Real-world impact — from architecture design to production deployment.',
       items: [
-        { name: 'Orchestration', value: 'LangChain, LangGraph, CrewAI, AutoGen' },
-        { name: 'Observability', value: 'LangFuse, LangFlow' },
-        { name: 'Integration', value: 'MCP Gateways, A2A Protocol' },
-        { name: 'Infrastructure', value: 'Databricks/Mosaic AI, Azure OpenAI, Google Vertex AI' },
-        { name: 'Custom Development', value: 'Python, TypeScript, FastAPI' },
+        {
+          industry: 'Financial Services',
+          problem: 'A regulated financial institution needed to automate manual compliance processes handling thousands of documents monthly.',
+          architecture: 'Multi-agent system with RAG pipeline, secure document processing, and audit trail. Deployed in private cloud with full observability.',
+          outcome: '70% reduction in manual work, full audit trail for the regulator, deployed in 6 weeks.',
+        },
+        {
+          industry: 'Telecommunications',
+          problem: 'A telco operator needed to streamline customer support and reduce escalations to L2/L3 teams.',
+          architecture: 'Orchestrated agent system with access to internal systems via MCP, evaluation via LangFuse, real-time monitoring.',
+          outcome: '40% fewer escalations, average resolution time cut by 55%, ROI achieved in 3 months.',
+        },
+        {
+          industry: 'Energy',
+          problem: 'An energy company needed to consolidate data from 12+ legacy systems for predictive maintenance.',
+          architecture: 'Data integration pipeline with agent layer for anomaly detection, Kubernetes orchestration, Grafana dashboards.',
+          outcome: 'Unified data view, 30% reduction in unplanned downtime, scalable architecture for further use-cases.',
+        },
       ],
     },
     audience: {
       title: 'Who Is This For',
-      text: 'Mid-size companies that want to automate repetitive processes but need tailored solutions — not one-size-fits-all SaaS. Organisations in finance, telco, energy, and public sector that need enterprise-grade AI with proper governance.',
+      text: 'Scaling companies and enterprise divisions that want to automate repetitive processes but need tailored solutions — not one-size-fits-all SaaS. Organisations in finance, telco, energy, and public sector that need enterprise-grade AI with proper governance.',
     },
     cta: {
       title: 'Ready to see what agentic AI can do for your business?',
