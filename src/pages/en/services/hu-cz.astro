@@ -1,0 +1,81 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import CTASection from '@/components/CTASection.astro';
+import { t } from '@/i18n';
+import { MapPin, Handshake, Cpu, Building2, User } from '@lucide/astro';
+
+const lang = 'en' as const;
+const i = t(lang);
+const { hucz, urls } = i;
+const offerIcons = [MapPin, Handshake, Cpu];
+---
+
+<Layout title={hucz.meta.title} description={hucz.meta.description} lang={lang}>
+  <Hero headline={hucz.hero.headline} subheadline={hucz.hero.subheadline} bgImage="/hu-cz.webp" />
+
+  <!-- Why -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal">
+        <h2 class="text-3xl font-bold mb-6">{hucz.why.title}</h2>
+        <div class="space-y-4 text-dark-100 text-lg leading-relaxed">
+          <p>{hucz.why.text}</p>
+          <p class="text-gold-400 font-medium">{hucz.why.text2}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offers -->
+  <section class="py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {hucz.offers.map((offer, idx) => {
+          const Icon = offerIcons[idx];
+          return (
+            <div class={`card scroll-reveal stagger-${idx + 1}`}>
+              <div class="w-12 h-12 bg-gold-400/10 rounded-xl flex items-center justify-center mb-6">
+                <Icon class="w-6 h-6 text-gold-400" />
+              </div>
+              <h3 class="text-xl font-semibold mb-4">{offer.title}</h3>
+              <p class="text-dark-100 leading-relaxed">{offer.text}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- CED -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal">
+        <div class="flex gap-4 items-start">
+          <Building2 class="w-8 h-8 text-gold-400 shrink-0 mt-1" />
+          <div>
+            <h2 class="text-3xl font-bold mb-6">{hucz.ced.title}</h2>
+            <p class="text-dark-100 text-lg leading-relaxed">{hucz.ced.text}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team lead -->
+  <section class="py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal">
+        <div class="flex gap-4 items-start">
+          <User class="w-8 h-8 text-gold-400 shrink-0 mt-1" />
+          <div>
+            <h2 class="text-3xl font-bold mb-6">{hucz.team.title}</h2>
+            <p class="text-dark-100 text-lg leading-relaxed">{hucz.team.text}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection title={hucz.cta.title} buttonLabel={hucz.cta.button} buttonHref={urls.contact} />
+</Layout>

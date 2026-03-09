@@ -1,65 +1,161 @@
 ---
-import '../styles/global.css';
+import '@fontsource-variable/inter';
+import '@/styles/global.css';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { type Lang, t, getAlternateUrl } from '@/i18n';
 
 interface Props {
-	title: string;
-	description?: string;
+  title: string;
+  description: string;
+  lang: Lang;
+  ogImage?: string;
 }
 
-const { title, description = "Velvethy & Mikes Corporation - Elite AI consulting firm specializing in strategic technology transformation for mid-size organizations." } = Astro.props;
+const { title, description, lang, ogImage } = Astro.props;
+const i = t(lang);
+const alternateUrl = getAlternateUrl(Astro.url, lang === 'en' ? 'cs' : 'en');
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(ogImage || '/og-image.jpg', Astro.site).href;
+const alternateLang = lang === 'en' ? 'cs' : 'en';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'VMCorp',
+  legalName: 'Velvethy & Mikes Corporation s.r.o.',
+  url: 'https://vmcorp.cz',
+  logo: new URL('/favicon.svg', Astro.site).href,
+  foundingDate: '2009',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Francouzská 299/98',
+    addressLocality: 'Praha 10',
+    addressRegion: 'Vršovice',
+    postalCode: '101 00',
+    addressCountry: 'CZ',
+  },
+  sameAs: [],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    url: new URL(lang === 'cs' ? '/cs/kontakt/' : '/en/contact/', Astro.site).href,
+  },
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'VMCorp',
+  url: 'https://vmcorp.cz',
+  inLanguage: [lang],
+};
+
+const breadcrumbParts = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbItems = breadcrumbParts.map((part, idx) => ({
+  '@type': 'ListItem',
+  position: idx + 1,
+  name: part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
+  item: new URL(breadcrumbParts.slice(0, idx + 1).join('/') + '/', Astro.site).href,
+}));
+
+const breadcrumbSchema = breadcrumbItems.length > 1
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbItems,
+    }
+  : null;
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#09090B" />
+    <meta name="color-scheme" content="dark" />
 
-		<!-- SEO Meta Tags -->
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:type" content="website" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="VMCorp" />
+    <meta property="og:locale" content={lang === 'cs' ? 'cs_CZ' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'cs' ? 'en_US' : 'cs_CZ'} />
 
-		<!-- Structured Data -->
-		<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "Organization",
-			"name": "Velvethy & Mikes Corporation",
-			"url": "https://vmcorp.cz",
-			"logo": "https://vmcorp.cz/logo.png",
-			"description": "Elite AI consulting firm specializing in strategic technology transformation",
-			"address": {
-				"@type": "PostalAddress",
-				"streetAddress": "Francouzska 299/98, Vrsovice",
-				"addressLocality": "Prague 10",
-				"postalCode": "101 00",
-				"addressCountry": "CZ"
-			},
-			"founders": [
-				{
-					"@type": "Person",
-					"name": "David Velvethy",
-					"jobTitle": "CEO"
-				},
-				{
-					"@type": "Person",
-					"name": "Jan Mikes",
-					"jobTitle": "CTO"
-				}
-			]
-		}
-		</script>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
-		<title>{title}</title>
-	</head>
-	<body class="bg-slate-950 text-slate-100">
-		<slot />
-	</body>
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Canonical & Alternate Languages -->
+    <link rel="canonical" href={canonicalUrl.href} />
+    <link rel="alternate" hreflang={alternateLang} href={new URL(alternateUrl, Astro.site).href} />
+    <link rel="alternate" hreflang={lang} href={canonicalUrl.href} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/cs/', Astro.site).href} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    {breadcrumbSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    )}
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header lang={lang} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+
+    <script>
+      // Scroll reveal observer
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+
+      document.querySelectorAll('.scroll-reveal, .scroll-reveal-left').forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Card spotlight glow — follows cursor
+      document.addEventListener('mousemove', (e) => {
+        document.querySelectorAll('.card').forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
+        });
+      });
+    </script>
+
+    <!-- Google Analytics -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-Q22NKL8KL5"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q22NKL8KL5');
+    </script>
+  </body>
 </html>

@@ -1,73 +1,81 @@
 ---
-import { Mail, MapPin, Linkedin, Twitter } from 'lucide-astro';
+import { type Lang, t } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const i = t(lang);
 ---
 
-<footer class="bg-slate-900 border-t border-slate-800">
-	<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-			<!-- Company Info -->
-			<div class="col-span-1 md:col-span-2 lg:col-span-1">
-				<div class="flex items-center space-x-3 mb-4">
-					<div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-						<span class="text-white font-bold text-xl">VM</span>
-					</div>
-					<span class="font-bold text-lg text-white">
-						VM<span class="text-cyan-400">Corp</span>
-					</span>
-				</div>
-				<p class="text-slate-400 text-sm mb-4">
-					Elite AI consulting firm specializing in strategic technology transformation for mid-size organizations.
-				</p>
-			</div>
+<footer class="border-t border-dark-400/30 bg-dark-900">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <a href={i.urls.home} class="flex items-center gap-3 mb-4" aria-label="VMCorp">
+          <svg class="w-9 h-9" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="8" fill="#151517"/>
+            <path d="M8 10 L13 10 L18 22 L23 10 L28 10 L18 27 Z" fill="#C8A84E"/>
+          </svg>
+          <span class="text-lg tracking-tight">
+            <span class="font-bold text-dark-50">VM</span><span class="font-normal text-dark-100">Corp</span>
+          </span>
+        </a>
+        <p class="text-dark-100 text-sm max-w-xs">
+          {i.footer.tagline}
+        </p>
+      </div>
 
-			<!-- Quick Links -->
-			<div>
-				<h3 class="font-semibold text-white mb-4">Quick Links</h3>
-				<ul class="space-y-2">
-					<li><a href="/" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Home</a></li>
-					<li><a href="/services" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Services</a></li>
-					<li><a href="/about" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">About</a></li>
-					<li><a href="/contact" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Contact</a></li>
-				</ul>
-			</div>
+      <!-- Services links -->
+      <div>
+        <h4 class="text-sm font-semibold text-dark-50 mb-4">{i.footer.services}</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href={i.urls.servicesAi} class="text-dark-100 hover:text-gold-400 transition-colors text-sm">
+              {i.nav.servicesAi}
+            </a>
+          </li>
+          <li>
+            <a href={i.urls.servicesArch} class="text-dark-100 hover:text-gold-400 transition-colors text-sm">
+              {i.nav.servicesArch}
+            </a>
+          </li>
+          <li>
+            <a href={i.urls.servicesHucz} class="text-dark-100 hover:text-gold-400 transition-colors text-sm">
+              {i.nav.servicesHucz}
+            </a>
+          </li>
+        </ul>
+      </div>
 
-			<!-- Services -->
-			<div>
-				<h3 class="font-semibold text-white mb-4">Services</h3>
-				<ul class="space-y-2">
-					<li class="text-slate-400 text-sm">AI Strategy</li>
-					<li class="text-slate-400 text-sm">Solution Architecture</li>
-					<li class="text-slate-400 text-sm">DevOps</li>
-					<li class="text-slate-400 text-sm">HU-CZ Business</li>
-				</ul>
-			</div>
-
-			<!-- Contact Info -->
-			<div>
-				<h3 class="font-semibold text-white mb-4">Contact</h3>
-				<ul class="space-y-3">
-					<li class="flex items-start space-x-2 text-slate-400 text-sm">
-						<MapPin size={16} class="mt-0.5 flex-shrink-0" />
-						<span>Francouzska 299/98<br/>101 00 Prague 10<br/>Czech Republic</span>
-					</li>
-					<li class="flex items-center space-x-2 text-slate-400 text-sm">
-						<Mail size={16} class="flex-shrink-0" />
-						<a href="/contact" class="hover:text-cyan-400 transition-colors">Contact Us</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<!-- Bottom Bar -->
-		<div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-			<p class="text-slate-400 text-sm">
-				&copy; {new Date().getFullYear()} Velvethy & Mikes Corporation. All rights reserved.
-			</p>
-			<div class="flex items-center space-x-2 text-xs text-slate-500">
-				<span>IČ: 28994124</span>
-				<span>•</span>
-				<span>DIČ: CZ28994124</span>
-			</div>
-		</div>
-	</div>
+      <!-- Company info -->
+      <div>
+        <h4 class="text-sm font-semibold text-dark-50 mb-4">{i.footer.company}</h4>
+        <ul class="space-y-3 mb-4">
+          <li>
+            <a href={i.urls.about} class="text-dark-100 hover:text-gold-400 transition-colors text-sm">
+              {i.nav.about}
+            </a>
+          </li>
+          <li>
+            <a href={i.urls.contact} class="text-dark-100 hover:text-gold-400 transition-colors text-sm">
+              {i.nav.contact}
+            </a>
+          </li>
+        </ul>
+        <div class="space-y-2 text-sm text-dark-100 border-t border-dark-400/30 pt-4">
+          <p>{i.footer.companyName}</p>
+          <p>{i.footer.address}</p>
+          <p class="pt-2">
+            <span class="text-dark-200">IC:</span> {i.footer.ic}
+          </p>
+          <p>
+            <span class="text-dark-200">DIC:</span> {i.footer.dic}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>

@@ -1,0 +1,77 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import CTASection from '@/components/CTASection.astro';
+import { t } from '@/i18n';
+import { CheckCircle } from '@lucide/astro';
+
+const lang = 'cs' as const;
+const i = t(lang);
+const { ai, urls } = i;
+---
+
+<Layout title={ai.meta.title} description={ai.meta.description} lang={lang}>
+  <Hero headline={ai.hero.headline} subheadline={ai.hero.subheadline} bgImage="/ai-systems.webp" />
+
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-12 scroll-reveal">
+        <h2 class="text-3xl font-bold mb-6">{ai.what.title}</h2>
+        <p class="text-dark-100 text-lg leading-relaxed">{ai.what.text}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {ai.what.points.map((point, idx) => (
+          <div class={`card scroll-reveal stagger-${idx + 1}`}>
+            <div class="flex gap-4">
+              <CheckCircle class="w-6 h-6 text-gold-400 shrink-0 mt-0.5" />
+              <div>
+                <h3 class="font-semibold mb-2">{point.title}</h3>
+                <p class="text-dark-100 text-sm">{point.text}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-12 scroll-reveal">{ai.process.title}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {ai.process.steps.map((step, idx) => (
+          <div class={`card scroll-reveal stagger-${idx + 1}`}>
+            <span class="text-gold-400 text-sm font-semibold">0{idx + 1}</span>
+            <h3 class="text-xl font-semibold mt-2 mb-4">{step.title}</h3>
+            <p class="text-dark-100 leading-relaxed">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-12 scroll-reveal">{ai.tech.title}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {ai.tech.items.map((item, idx) => (
+          <div class={`card scroll-reveal stagger-${Math.min(idx + 1, 4)}`}>
+            <h3 class="text-sm font-semibold text-gold-400 mb-2">{item.name}</h3>
+            <p class="text-dark-100">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal">
+        <h2 class="text-3xl font-bold mb-6">{ai.audience.title}</h2>
+        <p class="text-dark-100 text-lg leading-relaxed">{ai.audience.text}</p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection title={ai.cta.title} buttonLabel={ai.cta.button} buttonHref={urls.contact} />
+</Layout>

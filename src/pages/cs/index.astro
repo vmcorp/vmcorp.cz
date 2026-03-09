@@ -1,0 +1,156 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import SocialProofBar from '@/components/SocialProofBar.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import { t } from '@/i18n';
+
+const lang = 'cs' as const;
+const i = t(lang);
+const { home, urls } = i;
+
+const logoMap: Record<string, string> = {
+  'LangChain': '/logos/langchain.svg',
+  'CrewAI': '/logos/crewai.svg',
+  'Python': '/logos/python.svg',
+  'Node.js': '/logos/node.js.svg',
+  'PHP': '/logos/php.svg',
+  'TypeScript': '/logos/typescript.svg',
+  'FastAPI': '/logos/fastapi.svg',
+  'Next.js': '/logos/next.js.svg',
+  'PostgreSQL': '/logos/postgresql.svg',
+  'MongoDB': '/logos/mongodb.svg',
+  'Redis': '/logos/redis.svg',
+  'RabbitMQ': '/logos/rabbitmq.svg',
+  'GraphQL': '/logos/graphql.svg',
+  'OpenTelemetry': '/logos/opentelemetry.svg',
+  'Grafana': '/logos/grafana.svg',
+  'Prometheus': '/logos/prometheus.svg',
+  'Docker': '/logos/docker.svg',
+  'Kubernetes': '/logos/kubernetes.svg',
+  'Terraform': '/logos/terraform.svg',
+  'Ansible': '/logos/ansible.svg',
+  'N8N': '/logos/n8n.svg',
+  'AWS': '/logos/aws.svg',
+  'GCP': '/logos/gcp.svg',
+  'Azure': '/logos/azure.svg',
+  'LangGraph': '/logos/langgraph.svg',
+  'LangFuse': '/logos/langfuse.svg',
+  'AutoGen': '/logos/autogen.svg',
+  'MCP': '/logos/mcp.svg',
+  'A2A': '/logos/a2a.svg',
+  'REST': '/logos/rest.svg',
+  'WebSockets': '/logos/websockets.svg',
+  'Mercure': '/logos/mercure.svg',
+  'Loki': '/logos/loki.png',
+  'Alertmanager': '/logos/alertmanager.svg',
+};
+
+const allTech = home.techStack.categories.flatMap((cat) => cat.items);
+const mid = Math.ceil(allTech.length / 2);
+const row1 = allTech.slice(0, mid);
+const row2 = allTech.slice(mid);
+---
+
+<Layout title={home.meta.title} description={home.meta.description} lang={lang}>
+  <Hero
+    headline={home.hero.headline}
+    headlineAccent={home.hero.headlineAccent}
+    subheadline={home.hero.subheadline}
+    ctaPrimary={{ label: home.hero.ctaPrimary, href: urls.contact }}
+    ctaSecondary={{ label: home.hero.ctaSecondary, href: urls.about }}
+    large
+  />
+
+  <SocialProofBar items={home.socialProof} />
+
+  <!-- Co děláme -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {home.pillars.map((pillar, idx) => (
+          <div class={`scroll-reveal stagger-${idx + 1}`}>
+            <ServiceCard
+              title={pillar.title}
+              description={pillar.description}
+              icon={pillar.icon}
+              href={[urls.servicesAi, urls.servicesArch, urls.servicesHucz][idx]}
+              linkText="Zjistit více"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Proč VMCorp -->
+  <section class="py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal">
+        <span class="section-label">{home.why.label}</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mb-8">{home.why.title}</h2>
+        <div class="space-y-6 text-dark-100 text-lg leading-relaxed">
+          <p>{home.why.text}</p>
+          <p>{home.why.text2}</p>
+          <p class="text-gold-400 font-semibold">{home.why.kpi}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jak tvoříme hodnotu -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-16 scroll-reveal">
+        <span class="section-label">{home.process.label}</span>
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6">{home.process.title}</h2>
+        <p class="text-dark-100 text-lg">{home.process.subtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {home.process.steps.map((step, idx) => (
+          <div class={`scroll-reveal stagger-${idx + 1}`}>
+            <div class="card h-full">
+              <span class="text-gold-400 text-3xl font-bold mb-4 block">{step.number}</span>
+              <h3 class="text-lg font-semibold mb-3">{step.title}</h3>
+              <p class="text-dark-100 text-sm leading-relaxed">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologie -->
+  <section class="py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6 mb-10">
+      <span class="section-label scroll-reveal">{home.techStack.label}</span>
+      <p class="text-dark-200 text-sm mt-2 scroll-reveal">{home.techStack.subtitle}</p>
+    </div>
+    <div class="marquee-container scroll-reveal">
+      <div class="marquee-track">
+        {[...row1, ...row1].map((item) => (
+          <span class="inline-flex items-center gap-3 px-6 py-3.5 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-lg whitespace-nowrap">
+            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-7 h-7 grayscale brightness-150" />}
+            {item}
+          </span>
+        ))}
+      </div>
+      <div class="marquee-track-reverse">
+        {[...row2, ...row2].map((item) => (
+          <span class="inline-flex items-center gap-3 px-6 py-3.5 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-100 text-lg whitespace-nowrap">
+            {logoMap[item] && <img src={logoMap[item]} alt={`${item} logo`} width="28" height="28" loading="lazy" decoding="async" class="w-7 h-7 grayscale brightness-150" />}
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title={home.cta.title}
+    text={home.cta.text}
+    buttonLabel={home.cta.button}
+    buttonHref={urls.contact}
+  />
+</Layout>

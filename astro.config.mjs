@@ -1,11 +1,27 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
-import tailwindcss from '@tailwindcss/vite';
-
-// https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()]
-  }
+  site: 'https://vmcorp.cz',
+  integrations: [
+    tailwind(),
+    sitemap({
+      filter: (page) => page !== 'https://vmcorp.cz/',
+      i18n: {
+        defaultLocale: 'cs',
+        locales: {
+          cs: 'cs',
+          en: 'en',
+        },
+      },
+    }),
+  ],
+  i18n: {
+    defaultLocale: 'cs',
+    locales: ['cs', 'en'],
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
 });

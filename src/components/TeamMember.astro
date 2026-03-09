@@ -1,0 +1,52 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  initials: string;
+  bio: string;
+  bio2?: string;
+  bio3?: string;
+  email?: string;
+  photo?: string;
+}
+
+const { name, role, initials, bio, bio2, bio3, email, photo } = Astro.props;
+---
+
+<div class="scroll-reveal">
+  <div class="flex flex-col lg:flex-row gap-8 items-start">
+    <div class="shrink-0">
+      {photo ? (
+        <div class="w-32 h-32 rounded-full border-2 border-gold-400/30 overflow-hidden relative group">
+          <img
+            src={photo}
+            alt={`${name} — ${role}`}
+            width="128"
+            height="128"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover grayscale hover:grayscale-[50%] transition-all duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark-900/40 rounded-full" />
+          <div class="absolute inset-0 rounded-full mix-blend-overlay bg-gold-400/10" />
+        </div>
+      ) : (
+        <div class="w-32 h-32 rounded-full bg-dark-600 border-2 border-gold-400/30 flex items-center justify-center">
+          <span class="text-3xl font-bold text-gold-400">{initials}</span>
+        </div>
+      )}
+    </div>
+
+    <!-- Bio -->
+    <div>
+      <h3 class="text-2xl font-bold mb-1">{name}</h3>
+      <p class="text-gold-400 font-medium mb-1">{role}</p>
+      {email && <p class="mb-4"><a href={`mailto:${email}`} class="text-dark-200 hover:text-gold-400 transition-colors text-sm">{email}</a></p>}
+      <div class="space-y-4 text-dark-100 leading-relaxed">
+        <p>{bio}</p>
+        {bio2 && <p>{bio2}</p>}
+        {bio3 && <p>{bio3}</p>}
+      </div>
+    </div>
+  </div>
+</div>

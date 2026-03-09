@@ -1,0 +1,84 @@
+---
+interface Props {
+  headline: string;
+  headlineAccent?: string;
+  subheadline: string;
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+  large?: boolean;
+  bgImage?: string;
+}
+
+const { headline, headlineAccent, subheadline, ctaPrimary, ctaSecondary, large = false, bgImage } = Astro.props;
+const heroImage = bgImage || (large ? '/hero-bg.webp' : undefined);
+---
+
+<section class={`relative overflow-hidden ${large ? 'pt-40 pb-24 lg:pt-52 lg:pb-32' : 'pt-36 pb-16 lg:pt-44 lg:pb-20'}`}>
+  {/* Homepage hero — contained globe, right-aligned, moderate size */}
+  {heroImage && large && (
+    <div class="absolute inset-0">
+      <div class="absolute top-[10%] md:top-1/2 right-0 md:-translate-y-1/2 max-h-full max-w-[100%] md:max-w-[55%]">
+        <img
+          src={heroImage}
+          alt=""
+          role="presentation"
+          class="h-auto w-auto max-h-[60vh] md:max-h-full object-contain opacity-[0.35] md:opacity-[0.55] hero-bg-pulse"
+          width="1536"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/70 to-transparent" />
+      <div class="absolute inset-0 bg-gradient-to-b from-dark-900/60 via-transparent to-dark-900" />
+    </div>
+  )}
+  {/* Subpage heroes — atmospheric background, cover with gradients */}
+  {heroImage && !large && (
+    <div class="absolute inset-0 overflow-hidden">
+      <img
+        src={heroImage}
+        alt=""
+        role="presentation"
+        class="absolute inset-0 w-full h-full object-cover opacity-30 md:opacity-40 hero-bg-pulse-subtle"
+        width="1536"
+        height="1024"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 hero-gradient-animate" />
+      <div class="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/80 to-dark-900/40" />
+      <div class="absolute inset-0 bg-gradient-to-b from-dark-900/70 via-transparent to-dark-900" />
+    </div>
+  )}
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="max-w-3xl">
+      <h1 class={`font-bold tracking-tight mb-6 ${large ? 'text-4xl sm:text-5xl lg:text-6xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
+        {headline}
+        {headlineAccent && (
+          <span class="gold-shimmer"> {headlineAccent}</span>
+        )}
+      </h1>
+      <p class={`text-dark-100 leading-relaxed ${large ? 'text-lg lg:text-xl max-w-2xl' : 'text-lg max-w-2xl'}`}>
+        {subheadline}
+      </p>
+      {(ctaPrimary || ctaSecondary) && (
+        <div class="flex flex-wrap gap-4 mt-10">
+          {ctaPrimary && (
+            <a href={ctaPrimary.href} class="btn-primary">
+              {ctaPrimary.label}
+            </a>
+          )}
+          {ctaSecondary && (
+            <a href={ctaSecondary.href} class="btn-secondary">
+              {ctaSecondary.label}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

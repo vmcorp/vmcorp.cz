@@ -1,0 +1,146 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import { t } from '@/i18n';
+import { MapPin, Building2, Send } from '@lucide/astro';
+
+const lang = 'cs' as const;
+const i = t(lang);
+const { contact } = i;
+---
+
+<Layout title={contact.meta.title} description={contact.meta.description} lang={lang}>
+  <Hero headline={contact.hero.headline} subheadline={contact.hero.subheadline} bgImage="/contact.webp" />
+
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div class="scroll-reveal">
+          <form id="contact-form" class="space-y-6">
+            <input type="hidden" name="apiKey" value="b1e3760e-b2d4-4456-9233-067cbd66eba3" />
+            <input type="hidden" name="subject" value="VMCorp.cz — nová zpráva" />
+            <input type="text" name="_gotcha" style="display:none" />
+            <div>
+              <label for="name" class="block text-sm font-medium text-dark-50 mb-2">{contact.form.name}</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-50 placeholder-dark-200 focus:border-gold-400/50 focus:outline-none focus:ring-1 focus:ring-gold-400/30 transition-colors"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-dark-50 mb-2">{contact.form.email}</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-50 placeholder-dark-200 focus:border-gold-400/50 focus:outline-none focus:ring-1 focus:ring-gold-400/30 transition-colors"
+              />
+            </div>
+            <div>
+              <label for="company" class="block text-sm font-medium text-dark-50 mb-2">{contact.form.company}</label>
+              <input
+                type="text"
+                id="company"
+                name="$company"
+                class="w-full px-4 py-3 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-50 placeholder-dark-200 focus:border-gold-400/50 focus:outline-none focus:ring-1 focus:ring-gold-400/30 transition-colors"
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-dark-50 mb-2">{contact.form.message}</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                class="w-full px-4 py-3 bg-dark-700/50 border border-dark-400/50 rounded-xl text-dark-50 placeholder-dark-200 focus:border-gold-400/50 focus:outline-none focus:ring-1 focus:ring-gold-400/30 transition-colors resize-none"
+              />
+            </div>
+            <button type="submit" id="submit-btn" class="btn-primary w-full justify-center">
+              <Send class="w-5 h-5" />
+              <span id="submit-text">{contact.form.submit}</span>
+            </button>
+          </form>
+
+          <!-- Success state -->
+          <div id="form-success" class="hidden">
+            <div class="card-highlight text-center py-12">
+              <div class="w-16 h-16 bg-gold-400/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-2">{contact.form.success}</h3>
+              <p class="text-dark-100">{contact.form.successText}</p>
+            </div>
+          </div>
+
+          <!-- Error state -->
+          <div id="form-error" class="hidden">
+            <div class="card border-red-500/30 text-center py-8 mb-4">
+              <h3 class="text-xl font-bold text-red-400 mb-2">{contact.form.error}</h3>
+              <p class="text-dark-100 text-sm">{contact.form.errorText}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-reveal">
+          <div class="card-highlight h-fit">
+            <div class="flex gap-4 items-start mb-8">
+              <Building2 class="w-6 h-6 text-gold-400 shrink-0 mt-0.5" />
+              <div>
+                <h3 class="font-semibold text-lg mb-1">{contact.company.name}</h3>
+                <div class="text-dark-100 space-y-1 text-sm">
+                  <p>{contact.company.address}</p>
+                  <p>{contact.company.city}</p>
+                  <p>{contact.company.country}</p>
+                </div>
+              </div>
+            </div>
+            <div class="border-t border-dark-400/30 pt-6 space-y-2 text-sm text-dark-100">
+              <p><span class="text-dark-200">IC:</span> {contact.company.ic}</p>
+              <p><span class="text-dark-200">DIC:</span> {contact.company.dic}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script is:inline data-sending={contact.form.sending} data-submit={contact.form.submit}>
+    const form = document.getElementById('contact-form');
+    const btn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('submit-text');
+    const successEl = document.getElementById('form-success');
+    const errorEl = document.getElementById('form-error');
+    const sendingLabel = document.querySelector('[data-sending]')?.getAttribute('data-sending');
+    const submitLabel = document.querySelector('[data-submit]')?.getAttribute('data-submit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btnText.textContent = sendingLabel;
+      errorEl.classList.add('hidden');
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch('https://api.staticforms.dev/submit', {
+          method: 'POST',
+          body: JSON.stringify(Object.fromEntries(data)),
+          headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (res.ok) {
+          form.classList.add('hidden');
+          successEl.classList.remove('hidden');
+        } else {
+          throw new Error('Failed');
+        }
+      } catch {
+        errorEl.classList.remove('hidden');
+        btn.disabled = false;
+        btnText.textContent = submitLabel;
+      }
+    });
+  </script>
+</Layout>

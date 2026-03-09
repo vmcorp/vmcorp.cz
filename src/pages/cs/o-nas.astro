@@ -1,0 +1,106 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import TeamMember from '@/components/TeamMember.astro';
+import CTASection from '@/components/CTASection.astro';
+import { t } from '@/i18n';
+import { Mic } from '@lucide/astro';
+
+const lang = 'cs' as const;
+const i = t(lang);
+const { about, urls } = i;
+---
+
+<Layout title={about.meta.title} description={about.meta.description} lang={lang}>
+  <Hero headline={about.hero.headline} subheadline={about.hero.subheadline} bgImage="/about.webp" />
+
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal">
+        <span class="section-label">{about.story.label}</span>
+        <div class="space-y-6 text-dark-100 text-lg leading-relaxed mt-6">
+          <p>{about.story.p1}</p>
+          <p>{about.story.p2}</p>
+          <p>{about.story.p3}</p>
+          <p class="text-gold-400 font-semibold">{about.story.p4}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      <span class="section-label">{about.team.label}</span>
+      <div class="mt-12 space-y-16">
+        <TeamMember
+          name={about.team.david.name}
+          role={about.team.david.role}
+          initials={about.team.david.initials}
+          bio={about.team.david.bio}
+          bio2={about.team.david.bio2}
+          bio3={about.team.david.bio3}
+          email={about.team.david.email}
+          photo="/team-david.webp"
+        />
+        <div class="border-t border-dark-400/30" />
+        <TeamMember
+          name={about.team.jan.name}
+          role={about.team.jan.role}
+          initials={about.team.jan.initials}
+          bio={about.team.jan.bio}
+          bio2={about.team.jan.bio2}
+          bio3={about.team.jan.bio3}
+          email={about.team.jan.email}
+          photo="/team-jan.webp"
+        />
+        <div class="border-t border-dark-400/30" />
+        <div class="scroll-reveal">
+          <h3 class="text-2xl font-bold mb-1">{about.team.arpad.name}</h3>
+          <p class="text-gold-400 font-medium mb-4">{about.team.arpad.role}</p>
+          <p class="text-dark-100 leading-relaxed max-w-3xl">{about.team.arpad.bio}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <span class="section-label">{about.values.label}</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+        {about.values.items.map((value, idx) => (
+          <div class={`card scroll-reveal stagger-${idx + 1}`}>
+            <h3 class="text-xl font-semibold mb-3">{value.title}</h3>
+            <p class="text-dark-100 leading-relaxed">{value.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal mb-12">
+        <div class="flex gap-4 items-start">
+          <Mic class="w-8 h-8 text-gold-400 shrink-0 mt-1" />
+          <div>
+            <h2 class="text-3xl font-bold mb-6">{about.community.title}</h2>
+            <p class="text-dark-100 text-lg leading-relaxed">{about.community.text}</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {about.community.orgs.map((org, idx) => (
+          <a href={org.url} target="_blank" rel="noopener noreferrer" class={`card group scroll-reveal stagger-${idx + 1} flex flex-col items-center text-center`}>
+            <div class="w-16 h-16 rounded-xl bg-dark-600/50 flex items-center justify-center mb-4 group-hover:bg-dark-500/50 transition-colors overflow-hidden">
+              <img src={org.logo} alt={`${org.name} logo`} width="40" height="40" loading="lazy" decoding="async" class="w-10 h-10 object-contain" />
+            </div>
+            <h3 class="text-lg font-semibold mb-2">{org.name}</h3>
+            <p class="text-dark-200 text-sm leading-relaxed">{org.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection title={about.cta.title} buttonLabel={about.cta.button} buttonHref={urls.contact} />
+</Layout>

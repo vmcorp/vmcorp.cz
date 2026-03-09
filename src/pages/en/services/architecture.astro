@@ -1,0 +1,77 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import CTASection from '@/components/CTASection.astro';
+import { t } from '@/i18n';
+import { Code, Cloud, Eye, Wrench, Heart } from '@lucide/astro';
+
+const lang = 'en' as const;
+const i = t(lang);
+const { arch, urls } = i;
+const sectionIcons = [Code, Cloud, Eye];
+---
+
+<Layout title={arch.meta.title} description={arch.meta.description} lang={lang}>
+  <Hero headline={arch.hero.headline} subheadline={arch.hero.subheadline} bgImage="/architecture.webp" />
+
+  <!-- Intro -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal">
+        <div class="space-y-6 text-dark-100 text-lg leading-relaxed">
+          <p>{arch.intro.text}</p>
+          <p>{arch.intro.text2}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical sections -->
+  {arch.sections.map((section, sIdx) => (
+    <section class={`py-24 ${sIdx % 2 === 0 ? 'section-gradient' : ''}`}>
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-4 scroll-reveal">{section.title}</h2>
+        {section.intro && <p class="text-dark-100 text-lg mb-8 max-w-3xl scroll-reveal">{section.intro}</p>}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+          {section.items.map((item, idx) => (
+            <div class={`card scroll-reveal stagger-${Math.min(idx + 1, 4)}`}>
+              <p class="text-dark-100">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Legacy -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal">
+        <div class="flex gap-4 items-start">
+          <Wrench class="w-8 h-8 text-gold-400 shrink-0 mt-1" />
+          <div>
+            <h2 class="text-3xl font-bold mb-6">{arch.legacy.title}</h2>
+            <p class="text-dark-100 text-lg leading-relaxed">{arch.legacy.text}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Source -->
+  <section class="py-24 section-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl scroll-reveal">
+        <div class="flex gap-4 items-start">
+          <Heart class="w-8 h-8 text-gold-400 shrink-0 mt-1" />
+          <div>
+            <h2 class="text-3xl font-bold mb-6">{arch.oss.title}</h2>
+            <p class="text-dark-100 text-lg leading-relaxed">{arch.oss.text}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection title={arch.cta.title} buttonLabel={arch.cta.button} buttonHref={urls.contact} />
+</Layout>
